@@ -1,0 +1,68 @@
+#viewer_cookiesconsent{bottom: 0;position: fixed;width: 100%;background:#d679b5;color:#fff;z-index: 99999;padding: 1em 1.8em;display:none;}
+#viewer_cookiesconsent .viewer_cookiesconsent_inner{width: 100%;display: -ms-flexbox;display: -webkit-flex;display: flex;-webkit-flex-direction: row;-ms-flex-direction: row;flex-direction: row;-webkit-flex-wrap: nowrap;-ms-flex-wrap: nowrap;flex-wrap: nowrap;-webkit-justify-content: flex-start;-ms-flex-pack: start;justify-content: flex-start;-webkit-align-content: stretch;-ms-flex-line-pack: stretch;align-content: stretch;-webkit-align-items: stretch;-ms-flex-align: stretch;align-items: stretch;}
+
+#viewer_cookiesconsent .viewer_cookiesconsent_inner > :nth-child(1) {-webkit-order: 0;-ms-flex-order: 0;order: 0;-webkit-flex: 1 1 auto;-ms-flex: 1 1 auto;flex: 1 1 auto;-webkit-align-self: auto;-ms-flex-item-align: auto;align-self: auto;margin: 5px 0 0 0;}
+#viewer_cookiesconsent .viewer_cookiesconsent_inner > :nth-child(2) {-webkit-order: 0;-ms-flex-order: 0;order: 0;-webkit-flex: 0 1 auto;-ms-flex: 0 1 auto;flex: 0 1 auto;-webkit-align-self: auto;-ms-flex-item-align: auto;align-self: auto;}
+
+@media all and (max-width : 812px) {
+
+    #viewer_cookiesconsent  .viewer_cookiesconsent_inner{display:block}
+    #viewer_cookiesconsent .viewer_cookiesconsent_inner > :nth-child(1) {width:100%}
+    #viewer_cookiesconsent .viewer_cookiesconsent_inner > :nth-child(2) {width:100%;margin-top:10px;}
+
+}
+
+#viewer_cookiesconsent button{display: block;padding: .4em .8em;font-family: inherit;font-size: .9em;font-weight: 700;border-style: solid;text-align: center;white-space: nowrap;border:0;background-color:#fff;color:#263772;}
+#viewer_cookiesconsent a{color:inherit;}
+#viewer_cookiesconsent a:hover{text-decoration:none;}
+#viewer_cookiesconsent_overlay{position: fixed; width: 100%;height: 100%;top: 0px;left: 0px;background: rgba(0, 0, 0, .5);z-index: 999999;}
+#viewer_cookiesconsent_panel_wrapper{padding:15px;background:#fff;position:fixed;top:20%;left:20%;width:60%;height:60%;z-index: 9999999;}
+@media all and (max-width : 812px) {
+    #viewer_cookiesconsent_panel_wrapper{position:fixed;top:10%;left:10%;width:80%;height:80%;}
+}
+#viewer_cookiesconsent_panel_wrapper #viewer_cookiesconsent_panel{padding:25px;background:#fff;overflow:auto;height:100%;}
+#viewer_cookiesconsent_panel_wrapper #viewer_cookiesconsent_panel a{color:#4f5d8c;text-decoration:none}
+#viewer_cookiesconsent_panel_wrapper #viewer_cookiesconsent_panel a:hover{color:#d679b5}
+#viewer_cookiesconsent_panel_wrapper #viewer_cookiesconsent_close {height :30px;width: 30px;position: absolute;top: -15px;right: -15px;z-index: 100;cursor: pointer;background-color: #fff;padding: 3px;line-height: 1em;margin: 0;border-radius: 50%;-moz-border-radius: 50%;-webkit-border-radius: 50%;}
+#viewer_cookiesconsent_panel_wrapper #viewer_cookiesconsent_close img{height :24px;width: 24px;}
+
+#viewer_cookiesconsent_panel_wrapper #viewer_cookiesconsent_panel h1,
+#viewer_cookiesconsent_panel_wrapper #viewer_cookiesconsent_panel h2,
+#viewer_cookiesconsent_panel_wrapper #viewer_cookiesconsent_panel h3,
+#viewer_cookiesconsent_panel_wrapper #viewer_cookiesconsent_panel h4,
+#viewer_cookiesconsent_panel_wrapper #viewer_cookiesconsent_panel h5,
+#viewer_cookiesconsent_panel_wrapper #viewer_cookiesconsent_panel h6 {font-weight: bold;color: #2a2e34;text-rendering: optimizeLegibility;margin: 0;padding: 0;margin-bottom: 0.5em;line-height: 1.2;}
+
+#viewer_cookiesconsent_panel_wrapper #viewer_cookiesconsent_panel h1 {font-size: 2.0736em;}
+#viewer_cookiesconsent_panel_wrapper #viewer_cookiesconsent_panel h2 {font-size: 1.728em;}
+#viewer_cookiesconsent_panel_wrapper #viewer_cookiesconsent_panel h3 {font-size: 1.44em;}
+#viewer_cookiesconsent_panel_wrapper #viewer_cookiesconsent_panel h4 {font-size: 1.2em;}
+#viewer_cookiesconsent_panel_wrapper #viewer_cookiesconsent_panel h5 {font-size: 1em;}
+#viewer_cookiesconsent_panel_wrapper #viewer_cookiesconsent_panel h6 {font-size: 0.83333em;text-transform: uppercase;letter-spacing: .035em;}
+#viewer_cookiesconsent_panel_wrapper #viewer_cookiesconsent_panel blockquote {font-style: italic; color: rgba(0, 0, 0, 0.5);border: none;}
+
+#viewer_cookiesconsent_panel_wrapper #viewer_cookiesconsent_panel p,
+#viewer_cookiesconsent_panel_wrapper #viewer_cookiesconsent_panel dl,
+#viewer_cookiesconsent_panel_wrapper #viewer_cookiesconsent_panel blockquote,
+#viewer_cookiesconsent_panel_wrapper #viewer_cookiesconsent_panel hr,
+#viewer_cookiesconsent_panel_wrapper #viewer_cookiesconsent_panel pre,
+#viewer_cookiesconsent_panel_wrapper #viewer_cookiesconsent_panel table,
+#viewer_cookiesconsent_panel_wrapper #viewer_cookiesconsent_panel figure,
+#viewer_cookiesconsent_panel_wrapper #viewer_cookiesconsent_panel address {padding: 0; margin: 0;margin-bottom: 1em;}
+#viewer_cookiesconsent_panel_wrapper #viewer_cookiesconsent_panel ul,
+#viewer_cookiesconsent_panel_wrapper #viewer_cookiesconsent_panel ol {padding: 0;list-style:disc}
+#viewer_cookiesconsent_panel_wrapper #viewer_cookiesconsent_panel ol {list-style:decimal}
+#viewer_cookiesconsent_panel_wrapper #viewer_cookiesconsent_panel ul,
+#viewer_cookiesconsent_panel_wrapper #viewer_cookiesconsent_panel ul ul,
+#viewer_cookiesconsent_panel_wrapper #viewer_cookiesconsent_panel ul ol,
+#viewer_cookiesconsent_panel_wrapper #viewer_cookiesconsent_panel ol,
+#viewer_cookiesconsent_panel_wrapper #viewer_cookiesconsent_panel ol ul,
+#viewer_cookiesconsent_panel_wrapper #viewer_cookiesconsent_panel ol ol {margin: 0 0 0 1.5em;}
+#viewer_cookiesconsent_panel_wrapper #viewer_cookiesconsent_panel ul li,
+#viewer_cookiesconsent_panel_wrapper #viewer_cookiesconsent_panel ol li {text-align: left;}
+#viewer_cookiesconsent_panel_wrapper #viewer_cookiesconsent_panel ol ol li {list-style-type: lower-alpha;}
+#viewer_cookiesconsent_panel_wrapper #viewer_cookiesconsent_panel ol ol ol li {list-style-type: lower-roman;}
+#viewer_cookiesconsent_panel_wrapper #viewer_cookiesconsent_panel ul,
+#viewer_cookiesconsent_panel_wrapper #viewer_cookiesconsent_panel ol {margin-bottom: 1em;}
+
+#viewer_cookiesconsent_panel_wrapper #viewer_cookiesconsent_panel pre, #viewer_cookiesconsent_panel_wrapper #viewer_cookiesconsent_panel pre code {display: block;margin: 0 0 10px;font-size: 13px;word-break: break-all;word-wrap: break-word;border: 1px solid #ccc;border-radius: 4px;background-color: #f6f7f8;line-height: 1.5;color: rgba(68, 73, 80, 0.85);overflow: none;white-space: pre-wrap;padding: 1rem;}

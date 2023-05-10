@@ -1,0 +1,43 @@
+.panorama-static-image {height:100%;width:100%;background-repeat:no-repeat;background-position: center center;overflow:hidden;-webkit-background-size: cover;-moz-background-size: cover;-o-background-size: cover;background-size: cover;user-select: none;-moz-user-select: none;-khtml-user-select: none;-webkit-user-select: none;-o-user-select: none;}
+/*
+@media screen and (orientation:portrait) {
+    .panorama-static-image {
+      background-size: auto 100%;
+    }
+}
+
+@media screen and (orientation:landscape) {
+   .panorama-static-image {
+      background-size: 100% auto;
+    }
+}
+*/
+#panorama-static {color: #fff;padding: 20px;z-index: 999;position: fixed;text-align: center;border-radius: 5px;min-width: 320px;bottom: 50%;left: 50%;-ms-transform: translateX(-50%) translateY(50%);-moz-transform: translate(-50%, 50%);-webkit-transform: translate(-50%, 50%);transform: translate(-50%, 50%);user-select: none;-moz-user-select: none;-khtml-user-select: none;-webkit-user-select: none;-o-user-select: none;-webkit-font-smoothing: antialiased;}
+#panorama-static div{transform: translateZ(0);}
+#panorama-static .description {max-width:80%;margin:auto;overflow: hidden;font-size: 16px;}
+#panorama-static .play {font-size: 50px;color: #000;cursor: pointer;display: inline-block;opacity: 0.5;-webkit-transition: opacity 0.2s ease-in-out;-moz-transition: opacity 0.2s ease-in-out;-ms-transition: opacity 0.2s ease-in-out;-o-transition: opacity 0.2s ease-in-out;transition: opacity 0.2s ease-in-out;}
+#panorama-static .play:hover {opacity:1;}
+#panorama-static .txt {margin: 10px}
+#panorama-static .txt h1 {font-size: 25px;}
+#panorama-static .play svg {width: 62px;margin: 30px 0 0 0;}
+#panorama-static .play svg path {fill:#ffffff;}
+#panorama-static .sslinks{text-align:center;margin-top:20px}
+#panorama-static .sslinks svg{width:20px;height:20px;margin:auto 5px;opacity:1;-webkit-transition: opacity 0.2s ease-in-out;-moz-transition: opacity 0.2s ease-in-out;-ms-transition: opacity 0.2s ease-in-out;-o-transition: opacity 0.2s ease-in-out;transition: opacity 0.2s ease-in-out;}
+#panorama-static .sslinks svg:hover{opacity:0.5}
+#panorama-static .sslinks svg path{fill:#ffffff;}
+#panorama-static .sslinks a{text-decoration:none;}
+#panorama-static-overlay {position: fixed;width: 100%;height: 100%;background: rgba(0, 0, 0, .8);display: none;overflow:hidden;-webkit-transition: background 0.2s ease-in-out;-moz-transition: background 0.2s ease-in-out;-ms-transition: background 0.2s ease-in-out;-o-transition: background 0.2s ease-in-out;transition: background 0.2s ease-in-out;user-select: none;-moz-user-select: none;-khtml-user-select: none;-webkit-user-select: none;-o-user-select: none;}
+#panorama-static-overlay.overlay-opac {background: rgba(0, 0, 0, .7);}
+#panorama-static .logo img{max-height: 100px;}
+@media(max-width: 767px) {
+
+  #panorama-static .txt h1 {font-size: 20px;}
+  #panorama-static .description {font-size: 14px;}
+  #panorama-static .logo img {max-width: 200px;}
+
+}
+@media(max-height: 400px) {
+  #panorama-static .description{display: none;}
+}
+#panorama-static a:hover {text-decoration:none;}
+#panorama_static_read_more svg{fill:currentColor;height:20px;width:10px;padding-top:10px;}

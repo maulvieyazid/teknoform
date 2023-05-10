@@ -1,0 +1,27 @@
+#map_button_wrapper .icon_map{width: 21px;height: 21px;margin-top: 0;}
+#map_button_wrapper .icon_map svg{width: 21px;height: 21px;margin-top: 0;}
+#map_button_wrapper .icon_map svg path{fill: #ffffff;}
+#map-wrapper:before,
+#map-wrapper:after,
+#map:before,
+#map:after {content: '';position: absolute;z-index: 1;}
+#map-wrappe:before {top: -5px;left: 0;right: 0;height: 5px;}
+#map-wrappe:after {right: -5px;top: 0;bottom: 0;width: 5px;}
+#map:after {left: -5px;top: 0;bottom: 0;width: 5px;}
+#map_button_wrapper {position: absolute;display: none;color: #eee;height: 40px;z-index: 1;cursor: pointer;background: rgba(0, 0, 0, .1);border-radius: 5px 0 0 5px;left: calc(100% - 36px) !important;-webkit-transition: all 0.2s ease-in-out;-moz-transition: all 0.2s ease-in-out;-ms-transition: all 0.2s ease-in-out;-o-transition: all 0.2s ease-in-out;transition: all 0.2s ease-in-out;}
+#map_button_wrapper.selected {cursor: col-resize;}
+#map_button_wrapper .map {padding: 10px 8px;display: block;}
+#map_button_wrapper:hover,
+#map_button_wrapper.selected {border-radius: 5px 0 0 5px;color: #fff;background: rgba(0, 0, 0, .3);right: 0 !important;}
+#map-wrapper {position: absolute;left: auto !important;right: 0px;top: 0;height: 100%;display: block;overflow: hidden;box-shadow: 1px 0 0 0 #fff;width: 0px;z-index: 1;}
+#map-wrapper #map {width: 100%}
+#map-wrapper.mobile {right: -250px;}
+#map-wrapper.mobile-tablet {right: -350px;width: 350px;}
+#map-wrapper .ui-resizable {border: 5px solid #ddd;}
+#map-wrapper .ui-resizable-sw {left: 0px;width: auto;height: auto;}
+#map_geo-wrapper {z-index:2;}
+#map_resizer-wrapper {height: 10px;background: #333;cursor: ns-resize;z-index: 2;top: 0px !important}
+#map_custom-wrapper {position: relative;background-size: 40px 40px;background-color:#fff;z-index: 1;}
+#floorplan-img-pins span {position: absolute;cursor: pointer;z-index: 1;}
+#floorplan-img-pins span svg {width:27px;height:39px;fill: #c84d9b;}
+#floorplan-radar {position: absolute;width: 100px;height: 100px;background-size: contain;z-index: 0;display: none;pointer-events:none;}

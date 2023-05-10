@@ -1,0 +1,11 @@
+#automation_lock_viewer{position:absolute;top:0px;left:0px;width:100%;height:100%;background:transparent;z-index:9999999;-webkit-transition: opacity 260ms ease;-moz-transition: opacity 260ms ease;-ms-transition: opacity 260ms ease;-o-transition: opacity 260ms ease;transition: all 260ms ease;cursor:not-allowed;background:rgba(0,0,0,0.8);opacity:0;display:none;}
+
+#automation_stop{position:absolute;right:30px;top:30px;cursor:pointer}
+#automation_stop svg{width:30px;height:30px;fill:#ffffff}
+
+#automation_next{position:absolute;right:80px;top:30px;cursor:pointer}
+#automation_next svg{width:30px;height:30px;fill:#ffffff}
+#automation_next.disabled{opacity:0.5;pointer-events:none;}
+
+#automation_play{position:absolute;right:150px;top:30px;cursor:pointer}
+#automation_play svg{width:50px;height:50px;fill:#ffffff}

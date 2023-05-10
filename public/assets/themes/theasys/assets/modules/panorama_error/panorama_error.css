@@ -1,0 +1,7 @@
+#panorama-error {background-color: rgba(255,255,255,.9);color: #303442;padding: 20px;z-index: 999;display: none;position: fixed;text-align: center;border-radius: 5px;bottom: 50%;left: 50%;-ms-transform: translateX(-50%) translateY(50%);-moz-transform: translate(-50%, 50%);-webkit-transform: translate(-50%, 50%);transform: translate(-50%, 50%);user-select: none;-moz-user-select: none;-khtml-user-select: none;-webkit-user-select: none;-o-user-select: none;}
+#panorama-error .logo {margin: 0px}
+#panorama-error .logo img {width: 150px}
+#panorama-error a {color: #303442;text-decoration: underline;}
+#panorama-error a:hover {text-decoration: none;}
+#panorama-error .txt {margin: 10px}
+.panorama-error-bg {position: static;-webkit-background-size: cover;-moz-background-size: cover;-o-background-size: cover;background-size: cover;}
