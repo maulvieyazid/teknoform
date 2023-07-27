@@ -1,0 +1,6 @@
+.loading{border: 5px solid #d679b5;border-radius: 50px;height: 50px;left: 50%;margin: -25px 0 0 -25px;opacity: 0;position: absolute;top: 50%;width: 50px;animation: pulsate 0.9s ease-out;animation-iteration-count: infinite;-ms-transform: translateX(-50%) translateY(-50%);-webkit-transform: translate(-50%, -50%);transform: translate(-50%, -50%);pointer-events:none;z-index:9999;}
+@keyframes pulsate {
+0% {transform: scale(.1);opacity: 0.0;}
+50% {opacity: 1;}
+100% {transform: scale(1.2);opacity: 0;}
+}

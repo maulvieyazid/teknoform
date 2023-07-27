@@ -1,0 +1,11 @@
+#popup_overlay {background: rgba(0, 0, 0, .5);position: fixed;width: 100%;height: 100%;top: 0px;left: 0px;display: none;z-index: 2;}
+#popup {position: absolute;top: 0px;left: 0px;display: none;z-index: 99;padding:0px;}
+#popup img{max-width:100%;display:block;margin:auto;}
+#popup .popup-title{height:41px;font-family: Arial, sans-serif;font-weight: 500;font-size: 15px;line-height: 1.5em;margin-top: 0px;padding:10px;white-space: nowrap;overflow: hidden;text-overflow: ellipsis;}
+#popup #popup-close {height :30px;width: 30px;position: absolute;top: -15px;right: -15px;z-index: 100;cursor: pointer;background-color: #fff;padding: 3px;line-height: 1em;margin: 0;border-radius: 50%;-moz-border-radius: 50%;-webkit-border-radius: 50%;}
+#popup #popup-close img{width: 24px;height: 24px;}
+#popup #popup-content {background-color: #fff;margin: 0px;padding: 0px;position: relative;line-height: 0px;}
+#popup .image-wrapper {position: relative;line-height: 0;}
+#popup .iframe-wrapper {position: relative;padding-bottom: 62.25%;height: 0;overflow: hidden;border: none;}
+#popup .iframe-wrapper iframe {position: absolute;top: 0;left: 0;width: 100%;height: 100%;}
+#popup .image-wrapper {position: relative;line-height: 0;}

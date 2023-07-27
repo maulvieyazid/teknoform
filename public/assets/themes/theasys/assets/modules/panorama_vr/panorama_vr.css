@@ -1,0 +1,11 @@
+#panorama-vr-vertical-lock {position: fixed;top: 0px;left: 0px;width: 100%;height: 100%;background: #000;z-index: 999;color: #eee;overflow: hidden;}
+#panorama-vr-vertical-lock .txt {width: 50%;font-size: 0.9em;line-height: 1.55em;text-align: center;position: absolute;bottom: 50%;left: 50%;-ms-transform: translateX(-50%) translateY(50%);-moz-transform: translate(-50%, 50%);-webkit-transform: translate(-50%, 50%);transform: translate(-50%, 50%);}
+#panorama-vr-vertical-lock .txt .icon {font-size: 4em;color: #eee;}
+#panorama-vr-vertical-lock .exit {clear: both;display: block;font-size: 0.9em;cursor: pointer;text-align: center;border: none;background: rgba(255, 255, 255, 0.8);color: #333;padding: 0 10px;outline: none;border-radius: 4px;-moz-border-radius: 4px;-webkit-border-radius: 4px;margin: 1.5em auto 0 auto;}
+#panorama-vr-vertical-lock .exit .vertical_lock_exit_img {width: 35px;height: 26px;background-size: contain;background-position: center;float: left;background-repeat: no-repeat;}
+#panorama-vr-vertical-lock .exit .vertical_lock_exit_txt {line-height: 26px;padding-left: 8px;}
+#panorama-vr-vertical-lock .exit:hover {outline: none;background: rgba(255, 255, 255, .6);}
+.viewer_target {top: calc(50% - 25px);position: absolute;width: 60px;height: 38px;border: 0px solid #000;z-index: 998;display: none;background-size: contain;text-align: center;opacity: .2;-webkit-transition: all 0.2s ease-in-out;-moz-transition: all 0.2s ease-in-out;-ms-transition: all 0.2s ease-in-out;-o-transition: all 0.2s ease-in-out;transition: all 0.2s ease-in-out;}
+.viewer_target.focus {opacity: 1}
+.viewer_target span {color: #fff;text-shadow: #000 0 0 1px;font-weight: bold;text-align: center;position: absolute;bottom: 50%;left: 50%;-ms-transform: translateX(-50%) translateY(50%);-moz-transform: translate(-50%, 50%);-webkit-transform: translate(-50%, 50%);transform: translate(-50%, 50%);}
+.toggle-vr-wrapper {position: absolute;bottom: 0px;right: 0px;color: #fff;font-size: 25px}

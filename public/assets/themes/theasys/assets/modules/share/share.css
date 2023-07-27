@@ -1,0 +1,16 @@
+#panorama-share {display: block;text-align: center;}
+#panorama-share-content {padding: 12px;border-radius: 0px;}
+#panorama-share-content .tab-menu {display: flex;flex-wrap: nowrap;padding: 0;margin: 0;border: none;margin:  0 0 -1px 0;list-style: none}
+#panorama-share-content .tab-menu li {letter-spacing: normal;font-weight: 500;font-size: 15px;padding: 6px 12px;margin: 0;opacity: 0.5;flex-grow: 1;cursor: pointer;border: 1px solid transparent;border-bottom: none;-webkit-transition: all 0.2s ease-in-out;-moz-transition: all 0.2s ease-in-out;-ms-transition: all 0.2s ease-in-out;-o-transition: all 0.2s ease-in-out;transition: all 0.2s ease-in-out;}
+#panorama-share-content .tab-menu li.active {opacity: 1;}
+#panorama-share-content .tab-panes {padding: 0;}
+#panorama-share-content .tab-panes .tab-pane {display: none;padding: 12px;font-size: 13px;text-align: center;min-height: 89px;}
+#panorama-share-content .tab-panes .tab-pane input{border: 0px;margin: 0 0 0 0;padding: 10px;width: 100%;background: transparent;color: currentColor;}
+#panorama-share-content .tab-panes .tab-pane .share-border{height:1px;background: currentColor;opacity:.3;margin: 0 0 10px 0;}
+#panorama-share-content .tab-panes .tab-pane.active {display: block;}
+#panorama-share-content #share_this_view_loader.loading{margin-top:-10px}
+.social-share{margin-top:20px;}
+.social-share span{display:inline-block;margin:auto 10px 10px 10px;}
+.social-share span a{text-decoration:none;}
+.social-share span img{height:35px}
+#share_content.fancybox-content{padding:24px;color:#333}

@@ -1,0 +1,37 @@
+#thumbnails-wrapper #thumbnails-toggle-wrapper {position: absolute;text-align: center;opacity: 0;top: -36px;left: 50%;transform: translateX(-50%);}
+#thumbnails-wrapper #thumbnails-toggle {border-radius: 5px 5px 0 0;background: rgba(0, 0, 0, .1);display: flex; flex-direction: row; color: #fff;padding: 8px 9px 7px 10px;cursor: pointer;-webkit-transition: all 0.2s ease-in-out;-moz-transition: all 0.2s ease-in-out;-ms-transition: all 0.2s ease-in-out;-o-transition: all 0.2s ease-in-out;transition: all 0.2s ease-in-out;}
+#thumbnails-wrapper:hover #thumbnails-toggle, #thumbnails-wrapper.thumbnails-active #thumbnails-toggle{background: rgba(0, 0, 0, .3);}
+#thumbnails-wrapper {position: absolute;width: 100%;background: rgba(0, 0, 0, .3);padding: 12px 12px 6px 12px;z-index: 2;bottom: -98px;height: 98px;display:none;-webkit-transition: bottom 0.8s ease;-moz-transition: bottom 0.8s ease;-ms-transition: bottom 0.8s ease;-o-transition: bottom 0.8s ease;transition: bottom 0.8s ease;}
+#thumbnails-wrapper.thumbnails-active {bottom: 0px;}
+#thumbnails {z-index: auto;}
+#thumbnails .item {display: inline-block;cursor: pointer;border: none;opacity: 0.5;position:relative;overflow:auto;}
+#thumbnails .item:hover {opacity: 1;-webkit-transition: opacity 0.5s ease;-moz-transition: opacity 0.5s ease;-ms-transition: opacity 0.5s ease;-o-transition: opacity 0.5s ease;transition: opacity 0.5s ease;}
+#thumbnails .item.active {opacity: 1;}
+#thumbnails .item img {display: block;margin: auto;width: 150px;}
+#thumbnails .item .sticky {border-radius:8px;font-size:10px;padding:4px 10px;line-height: initial;position:absolute;background:rgba(0,0,0,0.6);color:#fff;text-align:center;width:90%;left:5%;bottom:3px;white-space: nowrap;text-overflow: ellipsis;max-width: 150px;overflow: hidden;display: inline-block;}
+#thumbnails-wrapper #thumbnails-tooltip {font-size: 14px;border: none;position: absolute;background: rgba(0, 0, 0, .3);color: #fff;padding: 5px 10px;display: none;width: 300px;text-align: center;word-wrap: break-word;}
+#thumbnails-wrapper #thumbnails-tooltip:after {content: '';}
+#thumbnails-toggle-wrapper .icon_images{width: 16px;height: 16px;margin-top: 6px;background-size: contain;background-position: center;background-repeat: no-repeat;display: inline-block;}
+#thumbnails-toggle-wrapper .icon_images{width: 21px;height: 21px;margin-top: 0;}
+#thumbnails-toggle-wrapper .icon_images svg{width: 21px;height: 21px;margin-top: 0;}
+#thumbnails-toggle-wrapper .icon_images svg path{fill:#ffffff;}
+#thumbnails-toggle-wrapper .current_panorama_title {margin: 2px 0 0 10px;white-space: nowrap;text-overflow: ellipsis;max-width: 320px;overflow: hidden;}
+@media(max-width:991px) {
+    #thumbnails-toggle-wrapper .current_panorama_title{max-width: 180px;}
+}
+#thumbnails.owl-carousel.owl-drag .owl-item {line-height:0px;}
+#thumbnails-tooltip.arrow_box {position: relative;border: 1px solid rgba(0, 0, 0, .3);}
+#thumbnails-tooltip.arrow_box:after,
+#thumbnails-tooltip.arrow_box:before {top: 100%;left: calc(50%);border: solid transparent;content: " ";height: 0;width: 0;position: absolute;pointer-events: none;}
+#thumbnails-tooltip.arrow_box:after {border-top-color: rgba(0, 0, 0, .3);border-width: 8px;margin-left: -8px;}
+#thumbnails.owl-carousel .owl-stage-outer {}
+#thumbnails.owl-carousel .owl-nav .nav-btn {}
+#thumbnails.owl-carousel .owl-nav .nav-btn svg {width: 50px;height: auto;display: inline-block;background: rgba(0,0,0,0.1);transform: translateY(-50%);padding:10px;border-radius: 50px;-webkit-transition: all 0.2s ease-in-out;-moz-transition: all 0.2s ease-in-out;-ms-transition: all 0.2s ease-in-out;-o-transition: all 0.2s ease-in-out;transition: all 0.2s ease-in-out;}
+#thumbnails.owl-carousel .owl-nav .nav-btn svg path {fill: #ffffff;}
+#thumbnails.owl-carousel .owl-nav .nav-btn svg:hover {background: rgba(0,0,0,0.6)!important;}
+#thumbnails.owl-carousel .owl-nav{overflow: hidden;}
+#thumbnails.owl-carousel .nav-btn{height:75px;position: absolute;cursor: pointer;}
+#thumbnails.owl-carousel .thumbnails-prev-slide{top: 40%;left:0px;}
+#thumbnails.owl-carousel .thumbnails-next-slide{top: 40%;right: 0px;}
+#thumbnails.owl-carousel .owl-prev.disabled,
+#thumbnails.owl-carousel .owl-next.disabled{pointer-events: none;opacity: 0.2;display:none;}

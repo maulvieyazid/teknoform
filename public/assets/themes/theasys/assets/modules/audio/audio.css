@@ -1,0 +1,7 @@
+#panorama-sound {background-color: transparent;text-align: center;}
+#panorama-sound-content {background: transparent;padding: 18px 24px;border-radius: 0px;color: currentColor;font-size: 18px;}
+#panorama-sound-content button{margin-top: 18px;letter-spacing: 0.05em;background: transparent;color: currentColor;border-color: currentColor;box-shadow : none;border-radius: 0px;font-family: unset;}
+#panorama-sound-content button:hover{opacity: 0.4;}
+#panorama-sound-content button ~ button {margin-left: 18px;}
+#panorama-sound-content .audio-border {height: 1px;background: currentColor;opacity: .3;margin: 10px 0 5px 0;}
+#audio_popup.fancybox-content{padding:24px;color:#333}
