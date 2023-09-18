@@ -529,8 +529,8 @@
                         <b>Email:</b>
                         <p>teknoform@dinamika.ac.id</p>
 
-                        <b>Telepon / Fax</b>
-                        <p>T 031 - 721731 &nbsp; F 031 - 8710218</p>
+                        <b>Telepon / Whatsapp</b>
+                        <p>T 031 - 721731 &nbsp; / &nbsp; W 0823 - 3593 - 1114</p>
                         <iframe
                             src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d15829.505576089192!2d112.7824338!3d-7.3115441!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xf13eec4465c5a263!2sUniversitas%20Dinamika%20(STIKOM%20Surabaya)!5e0!3m2!1sen!2sus!4v1618467703795!5m2!1sen!2sus"
                             height="300" style="width: 100%; border:0;" allowfullscreen="" loading="lazy"></iframe>
