@@ -53,7 +53,7 @@
                                     <input name="tanggal_kunjungan" id="tanggal_kunjungan" type="text" class="form-control" autocomplete="off"
                                         required />
                                 </div>
-                                <button type="submit" name="simpan" class="btn text-white border rounded-0"
+                                <button type="submit" name="simpan" class="btn text-white border rounded-0 btn-outline-secondary"
                                     style="width: 10rem;">Kirim</button>
                             </div>
                         </div>
