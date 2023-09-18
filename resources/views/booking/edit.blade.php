@@ -2,7 +2,6 @@
 
 @push('styles')
     <link rel="stylesheet" href="{{ asset('vendors/flatpickr/flatpickr.min.css') }}">
-
 @endpush
 
 @section('content')
@@ -30,8 +29,7 @@
                         </div>
                         <div class="card-content">
                             <div class="card-body">
-                                <form class="form form-horizontal"
-                                    action="{{ route('booking.update', $booking->id_booking) }}" method="POST">
+                                <form class="form form-horizontal" action="{{ route('booking.update', $booking->id_booking) }}" method="POST" enctype="multipart/form-data">
                                     @csrf
                                     @method('PUT')
                                     <div class="form-body">
@@ -40,67 +38,80 @@
                                                 <label>Nama Pemesan</label>
                                             </div>
                                             <div class="col-md-10 form-group">
-                                                <input type="text" id="nama" class="form-control" name="nama"
-                                                    placeholder="Nama Pemesan" value="{{ $booking->nama }}">
+                                                <input type="text" id="nama" class="form-control" name="nama" placeholder="Nama Pemesan" value="{{ $booking->nama }}">
                                             </div>
+
                                             <div class="col-md-2">
                                                 <label>Email Pemesan</label>
                                             </div>
                                             <div class="col-md-10 form-group">
-                                                <input type="email" id="email" class="form-control" name="email"
-                                                    placeholder="Email Pemesan" value="{{ $booking->email }}">
+                                                <input type="email" id="email" class="form-control" name="email" placeholder="Email Pemesan" value="{{ $booking->email }}">
                                             </div>
+
                                             <div class="col-md-2">
                                                 <label>No. Hp Pemesan</label>
                                             </div>
                                             <div class="col-md-10 form-group">
-                                                <input type="text" id="telp" class="form-control" name="telp"
-                                                    placeholder="No. Hp Pemesan" value="{{ $booking->telp }}">
+                                                <input type="text" id="telp" class="form-control" name="telp" placeholder="No. Hp Pemesan" value="{{ $booking->telp }}">
                                             </div>
+
                                             <div class="col-md-2">
                                                 <label>Instansi / Sekolah</label>
                                             </div>
                                             <div class="col-md-10 form-group">
-                                                <input type="text" id="instansi" class="form-control" name="instansi"
-                                                    placeholder="Instansi / Sekolah" value="{{ $booking->instansi }}">
+                                                <input type="text" id="instansi" class="form-control" name="instansi" placeholder="Instansi / Sekolah" value="{{ $booking->instansi }}">
                                             </div>
+
                                             <div class="col-md-2">
                                                 <label>Jumlah Peserta</label>
                                             </div>
                                             <div class="col-md-10 form-group">
-                                                <input type="number" id="jumlah_peserta" class="form-control"
-                                                    name="jumlah_peserta" placeholder="Jumlah Peserta" min="0"
-                                                    value="{{ $booking->jumlah_peserta }}"
+                                                <input type="number" id="jumlah_peserta" class="form-control" name="jumlah_peserta" placeholder="Jumlah Peserta" min="0" value="{{ $booking->jumlah_peserta }}"
                                                     oninput="this.value = !!this.value && Math.abs(this.value) >= 0 ? Math.abs(this.value) : null">
                                             </div>
+
                                             <div class="col-md-2">
                                                 <label>Kunjungan</label>
                                             </div>
                                             <div class="col-md-10 form-group">
-                                                <input type="text" id="tanggal_kunjungan" class="form-control"
-                                                    name="tanggal_kunjungan" placeholder="Kunjungan" autocomplete="off">
+                                                <input type="text" id="tanggal_kunjungan" class="form-control" name="tanggal_kunjungan" placeholder="Kunjungan" autocomplete="off">
                                             </div>
+
                                             <div class="col-md-2">
                                                 <label>Status</label>
                                             </div>
                                             <div class="col-md-10 form-group">
-                                                <input type="radio" class="btn-check" name="status" id="secondary-outlined"
-                                                    autocomplete="off" value="tunggu" @if ($booking->status == 'tunggu') {{ 'checked' }} @endif>
+                                                <input type="radio" class="btn-check" name="status" id="secondary-outlined" autocomplete="off" value="tunggu" @if ($booking->status == \App\Booking::STATUS_TUNGGU) {{ 'checked' }} @endif>
                                                 <label class="btn btn-outline-secondary" for="secondary-outlined">
                                                     <i class="bi bi-question-circle me-50"></i> Tunggu
                                                 </label>
-                                                <input type="radio" class="btn-check" name="status" id="success-outlined"
-                                                    autocomplete="off" value="setuju" @if ($booking->status == 'setuju') {{ 'checked' }} @endif>
+                                                <input type="radio" class="btn-check" name="status" id="success-outlined" autocomplete="off" value="setuju" @if ($booking->status == \App\Booking::STATUS_SETUJU) {{ 'checked' }} @endif>
                                                 <label class="btn btn-outline-success" for="success-outlined">
                                                     <i class="bi bi-check-circle me-50"></i> Setuju
                                                 </label>
 
-                                                <input type="radio" class="btn-check" name="status" id="danger-outlined"
-                                                    autocomplete="off" value="batal" @if ($booking->status == 'batal') {{ 'checked' }} @endif>
+                                                <input type="radio" class="btn-check" name="status" id="danger-outlined" autocomplete="off" value="batal" @if ($booking->status == \App\Booking::STATUS_BATAL) {{ 'checked' }} @endif>
                                                 <label class="btn btn-outline-danger" for="danger-outlined">
                                                     <i class="bi bi-x-circle me-50"></i> Batal
                                                 </label>
                                             </div>
+
+                                            <div class="col-md-2">
+                                                <label>Lampiran Surat</label>
+                                            </div>
+                                            <div class="col-md-10 form-group">
+                                                <div>
+                                                    <input type="file" name="lampiran_surat" accept=".pdf,.docx,.jpg,.jpeg,.png" onchange="checkFileSize(this)">
+                                                </div>
+                                                <div class="mt-2">
+                                                    @if ($booking->lampiran_surat)
+                                                        <a href="{{ asset($booking->lampiran_surat) }}" class="btn btn-primary" target="_blank">
+                                                            Lihat File Lampiran Surat
+                                                        </a>
+                                                    @endif
+                                                </div>
+                                            </div>
+
                                             <div class="col-md-10 form-group sendEmail" style="display: none">
                                                 <input type="checkbox" id="sendEmail" name="sendEmail" class="form-check-input">
                                                 <label for="sendEmail">Kirim email notifikasi ke pengunjung</label>
@@ -122,13 +133,28 @@
     @push('scripts')
         <script src="{{ asset('vendors/flatpickr/flatpickr.js') }}"></script>
         <script src="{{ asset('vendors/flatpickr/id.js') }}"></script>
+        <script>
+            // Fungsi untuk memeriksa ukuran file saat berubah pada input tipe file
+            function checkFileSize(input) {
+                var maxSizeInBytes = 5 * 1024 * 1024; // 5 MB
+    
+                return Array.from(input.files).every(function(file) {
+                    if (file.size > maxSizeInBytes) {
+                        alert("File terlalu besar. Maksimal 4 MB yang diizinkan.");
+                        input.value = null;
+                        return false;
+                    }
+                    return true;
+                });
+            }
+        </script>
 
         <script>
             function hariBesar(date) {
                 let hari = {!! $hari !!}
                 /* Entah kenapa, date flatpickr harus ditambahkan satu hari
-                * biar dia bisa membandingkan dengan benar
-                */
+                 * biar dia bisa membandingkan dengan benar
+                 */
                 let plusOneDay = date.setDate(date.getDate() + 1);
                 return hari.includes(new Date(plusOneDay).toISOString().substring(0, 10));
             }
@@ -157,7 +183,7 @@
             /* Ambil semua input yang memiliki attribut name='status',
              * kemudian lakukan perulangan untuk mengecek value nya satu persatu
              */
-             if (document.querySelector('input[name="status"]')) {
+            if (document.querySelector('input[name="status"]')) {
                 document.querySelectorAll('input[name="status"]').forEach((elem) => {
                     elem.addEventListener("change", function(event) {
                         var status = event.target.value;
@@ -166,15 +192,13 @@
                         if (status != '{{ $booking->status }}') {
                             sendEmail[0].style.display = 'block'
                             document.getElementById('sendEmail').checked = true
-                        }
-                        else{
+                        } else {
                             sendEmail[0].style.display = 'none'
                             document.getElementById('sendEmail').checked = false
                         }
                     });
                 });
             }
-
         </script>
     @endpush
 @endsection

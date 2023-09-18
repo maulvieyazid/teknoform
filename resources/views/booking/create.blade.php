@@ -30,7 +30,7 @@
                         </div>
                         <div class="card-content">
                             <div class="card-body">
-                                <form class="form form-horizontal" method="POST" action="{{ route('booking.store') }}">
+                                <form class="form form-horizontal" method="POST" action="{{ route('booking.store') }}" enctype="multipart/form-data">
                                     @csrf
                                     <div class="form-body">
                                         <div class="row">
@@ -41,6 +41,7 @@
                                                 <input type="text" id="nama" class="form-control" name="nama"
                                                     placeholder="Nama Pemesan" required autofocus>
                                             </div>
+                                            
                                             <div class="col-md-2">
                                                 <label>Email Pemesan</label>
                                             </div>
@@ -48,6 +49,7 @@
                                                 <input type="email" id="email" class="form-control" name="email"
                                                     placeholder="Email Pemesan">
                                             </div>
+
                                             <div class="col-md-2">
                                                 <label>No. Hp Pemesan</label>
                                             </div>
@@ -55,6 +57,7 @@
                                                 <input type="text" id="telp" class="form-control" name="telp"
                                                     placeholder="No. Hp Pemesan">
                                             </div>
+                                            
                                             <div class="col-md-2">
                                                 <label>Instansi / Sekolah</label>
                                             </div>
@@ -62,6 +65,7 @@
                                                 <input type="text" id="instansi" class="form-control" name="instansi"
                                                     placeholder="Instansi / Sekolah">
                                             </div>
+                                            
                                             <div class="col-md-2">
                                                 <label>Jumlah Peserta</label>
                                             </div>
@@ -71,6 +75,7 @@
                                                     onwheel="this.blur()"
                                                     oninput="this.value = !!this.value && Math.abs(this.value) >= 0 ? Math.abs(this.value) : null">
                                             </div>
+                                            
                                             <div class="col-md-2">
                                                 <label>Kunjungan</label>
                                             </div>
@@ -78,27 +83,37 @@
                                                 <input type="text" id="tanggal_kunjungan" class="form-control"
                                                     name="tanggal_kunjungan" placeholder="Kunjungan" autocomplete="off">
                                             </div>
+
                                             <div class="col-md-2">
                                                 <label>Status</label>
                                             </div>
                                             <div class="col-md-10 form-group">
                                                 <input type="radio" class="btn-check" name="status" id="secondary-outlined"
-                                                    autocomplete="off" checked value="tunggu">
+                                                    autocomplete="off" checked value="{{ \App\Booking::STATUS_TUNGGU }}">
                                                 <label class="btn btn-outline-secondary" for="secondary-outlined">
                                                     <i class="bi bi-question-circle me-50"></i> Tunggu
                                                 </label>
                                                 <input type="radio" class="btn-check" name="status" id="success-outlined"
-                                                    autocomplete="off" value="setuju">
+                                                    autocomplete="off" value="{{ \App\Booking::STATUS_SETUJU }}">
                                                 <label class="btn btn-outline-success" for="success-outlined">
                                                     <i class="bi bi-check-circle me-50"></i> Setuju
                                                 </label>
 
                                                 <input type="radio" class="btn-check" name="status" id="danger-outlined"
-                                                    autocomplete="off" value="batal">
+                                                    autocomplete="off" value="{{ \App\Booking::STATUS_BATAL }}">
                                                 <label class="btn btn-outline-danger" for="danger-outlined">
                                                     <i class="bi bi-x-circle me-50"></i> Batal
                                                 </label>
                                             </div>
+
+                                            <div class="col-md-2">
+                                                <label>Lampiran Surat</label>
+                                            </div>
+                                            <div class="col-md-10 form-group">
+                                                <input type="file" name="lampiran_surat" accept=".pdf,.docx,.jpg,.jpeg,.png" onchange="checkFileSize(this)">
+                                            </div>
+                                            
+                                            
                                             <div class="col-md-10 form-group">
                                                 <input type="checkbox" id="sendEmail" name="sendEmail"
                                                     class="form-check-input" checked>
@@ -121,6 +136,21 @@
     @push('scripts')
         <script src="{{ asset('vendors/flatpickr/flatpickr.js') }}"></script>
         <script src="{{ asset('vendors/flatpickr/id.js') }}"></script>
+        <script>
+            // Fungsi untuk memeriksa ukuran file saat berubah pada input tipe file
+            function checkFileSize(input) {
+                var maxSizeInBytes = 5 * 1024 * 1024; // 5 MB
+    
+                return Array.from(input.files).every(function(file) {
+                    if (file.size > maxSizeInBytes) {
+                        alert("File terlalu besar. Maksimal 4 MB yang diizinkan.");
+                        input.value = null;
+                        return false;
+                    }
+                    return true;
+                });
+            }
+        </script>
 
         <script>
             function hariBesar(date) {
