@@ -105,6 +105,12 @@ return [
             'root'   => public_path('upload/berita')
         ],
 
+        'lampiran_surat_booking' => [
+            'driver' => 'local',
+            'root'   => public_path('upload/lampiran_surat_booking'),
+            'relative_path' => 'upload/lampiran_surat_booking',
+        ],
+
         'drive_museum' => [
             'driver'       => 'google',
             'clientId'     => env('GOOGLE_DRIVE_CLIENT_ID'),
