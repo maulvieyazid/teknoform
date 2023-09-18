@@ -14,418 +14,162 @@ class Controller extends BaseController
 
     protected function getHariBesarIndonesia()
     {
-        // $source = file_get_contents("https://github.com/guangrei/Json-Indonesia-holidays/raw/master/calendar.json");
-        $source = $this->hariLiburIndonesia();
+        // Coba ambil dari API Hari Libur
+        // Kalo API nya bermasalah, maka ambil data Hari Libur dari data statis
+        try {
+            $source = file_get_contents("https://raw.githubusercontent.com/guangrei/APIHariLibur_V2/main/holidays.json");
+        } catch (\Throwable $th) {
+            $source = $this->hariLiburIndonesia();
+        }
+
+        // Lakukan json_decode, lalu jadikan collect
         $data = collect(json_decode($source, true))
+            // Ambil key nya aja, karena key nya adalah tanggal libur nya
             ->keys()
+            // Buang 1 item yang paling belakang, karena itu adalah info pembuat API nya
             ->slice(0, -1)
+            // Lakukan format terhadap key nya agar mengembalikan format tgl "Y-m-d"
+            // NOTE : Meskipun bentuk key nya sudah sesuai format tgl, tetapi hal ini tetap harus dilakukan
+            //        agar format tgl nya selalu konsisten bila suatu waktu bentuk key nya berubah
             ->map(function ($item) {
                 $y = new DateTime($item);
                 return $y->format('Y-m-d');
             });
+            
         return $data;
     }
 
     protected function hariLiburIndonesia()
     {
         return '{
-            "20210101": {
-                "deskripsi": "Hari Tahun Baru",
-                "dibuat": "20210826T115903Z",
-                "dimodifikasi": "20210826T115903Z",
-                "status": "CONFIRMED"
-            },
-            "20210212": {
-                "deskripsi": "Tahun Baru Imlek",
-                "dibuat": "20210826T115932Z",
-                "dimodifikasi": "20210826T115932Z",
-                "status": "CONFIRMED"
-            },
-            "20210311": {
-                "deskripsi": "Isra Mikraj Nabi Muhammad",
-                "dibuat": "20210826T115927Z",
-                "dimodifikasi": "20210826T115927Z",
-                "status": "CONFIRMED"
-            },
-            "20210312": {
-                "deskripsi": "Cuti Bersama",
-                "dibuat": "20210826T115907Z",
-                "dimodifikasi": "20210826T115907Z",
-                "status": "CONFIRMED"
-            },
-            "20210314": {
-                "deskripsi": "Hari Suci Nyepi (Tahun Baru Saka)",
-                "dibuat": "20210826T115917Z",
-                "dimodifikasi": "20210826T115917Z",
-                "status": "CONFIRMED"
-            },
-            "20210402": {
-                "deskripsi": "Wafat Isa Almasih",
-                "dibuat": "20210826T115917Z",
-                "dimodifikasi": "20210826T115917Z",
-                "status": "CONFIRMED"
-            },
-            "20210404": {
-                "deskripsi": "Hari Paskah",
-                "dibuat": "20210826T115932Z",
-                "dimodifikasi": "20210826T115932Z",
-                "status": "CONFIRMED"
-            },
-            "20210421": {
-                "deskripsi": "Hari Kartini",
-                "dibuat": "20210826T115927Z",
-                "dimodifikasi": "20210826T115927Z",
-                "status": "CONFIRMED"
-            },
-            "20210501": {
-                "deskripsi": "Hari Buruh Internasional / Pekerja",
-                "dibuat": "20210826T115917Z",
-                "dimodifikasi": "20210826T115917Z",
-                "status": "CONFIRMED"
-            },
-            "20210512": {
-                "deskripsi": "Cuti Bersama Idul Fitri",
-                "dibuat": "20210826T115903Z",
-                "dimodifikasi": "20210826T115903Z",
-                "status": "CONFIRMED"
-            },
-            "20210513": {
-                "deskripsi": "Hari Idul Fitri",
-                "dibuat": "20210826T115927Z",
-                "dimodifikasi": "20210826T115927Z",
-                "status": "CONFIRMED"
-            },
-            "20210514": {
-                "deskripsi": "Hari Idul Fitri",
-                "dibuat": "20210826T115903Z",
-                "dimodifikasi": "20210826T115903Z",
-                "status": "CONFIRMED"
-            },
-            "20210517": {
-                "deskripsi": "Cuti Bersama Idul Fitri",
-                "dibuat": "20210826T115907Z",
-                "dimodifikasi": "20210826T115907Z",
-                "status": "CONFIRMED"
-            },
-            "20210518": {
-                "deskripsi": "Cuti Bersama Idul Fitri",
-                "dibuat": "20210826T115907Z",
-                "dimodifikasi": "20210826T115907Z",
-                "status": "CONFIRMED"
-            },
-            "20210519": {
-                "deskripsi": "Cuti Bersama Idul Fitri",
-                "dibuat": "20210826T115903Z",
-                "dimodifikasi": "20210826T115903Z",
-                "status": "CONFIRMED"
-            },
-            "20210526": {
-                "deskripsi": "Hari Raya Waisak",
-                "dibuat": "20210826T115927Z",
-                "dimodifikasi": "20210826T115927Z",
-                "status": "CONFIRMED"
-            },
-            "20210601": {
-                "deskripsi": "Hari Lahir Pancasila",
-                "dibuat": "20210826T115907Z",
-                "dimodifikasi": "20210826T115907Z",
-                "status": "CONFIRMED"
-            },
-            "20210720": {
-                "deskripsi": "Idul Adha (Lebaran Haji)",
-                "dibuat": "20210826T115903Z",
-                "dimodifikasi": "20210826T115903Z",
-                "status": "CONFIRMED"
-            },
-            "20210810": {
-                "deskripsi": "Satu Muharam / Tahun Baru Hijriah",
-                "dibuat": "20210826T115903Z",
-                "dimodifikasi": "20210826T115903Z",
-                "status": "CONFIRMED"
-            },
-            "20210811": {
-                "deskripsi": "Satu Muharam / Tahun Baru Hijriah",
-                "dibuat": "20210826T115917Z",
-                "dimodifikasi": "20210826T115917Z",
-                "status": "CONFIRMED"
-            },
-            "20210817": {
-                "deskripsi": "Hari Proklamasi Kemerdekaan R.I.",
-                "dibuat": "20210826T115917Z",
-                "dimodifikasi": "20210826T115917Z",
-                "status": "CONFIRMED"
-            },
-            "20211002": {
-                "deskripsi": "Hari Batik",
-                "dibuat": "20210826T115903Z",
-                "dimodifikasi": "20210826T115903Z",
-                "status": "CONFIRMED"
-            },
-            "20211019": {
-                "deskripsi": "Maulid Nabi Muhammad",
-                "dibuat": "20211016T083034Z",
-                "dimodifikasi": "20211016T083034Z",
-                "status": "CONFIRMED"
-            },
-            "20211020": {
-                "deskripsi": "Maulid Nabi Muhammad",
-                "dibuat": "20210826T115907Z",
-                "dimodifikasi": "20210826T115907Z",
-                "status": "CONFIRMED"
-            },
-            "20211104": {
-                "deskripsi": "Diwali / Deepavali",
-                "dibuat": "20210826T115903Z",
-                "dimodifikasi": "20210826T115903Z",
-                "status": "CONFIRMED"
-            },
-            "20211112": {
-                "deskripsi": "Hari Ayah",
-                "dibuat": "20210826T115917Z",
-                "dimodifikasi": "20210826T115917Z",
-                "status": "CONFIRMED"
-            },
-            "20211125": {
-                "deskripsi": "Hari Guru",
-                "dibuat": "20210826T115903Z",
-                "dimodifikasi": "20210826T115903Z",
-                "status": "CONFIRMED"
-            },
-            "20211222": {
-                "deskripsi": "Hari Ibu",
-                "dibuat": "20210826T115903Z",
-                "dimodifikasi": "20210826T115903Z",
-                "status": "CONFIRMED"
-            },
-            "20211224": {
-                "deskripsi": "Malam Natal",
-                "dibuat": "20210826T115927Z",
-                "dimodifikasi": "20210826T115927Z",
-                "status": "CONFIRMED"
-            },
-            "20211225": {
-                "deskripsi": "Hari Raya Natal",
-                "dibuat": "20210826T115927Z",
-                "dimodifikasi": "20210826T115927Z",
-                "status": "CONFIRMED"
-            },
-            "20211227": {
-                "deskripsi": "Cuti Bersama Natal (Hari Tinju)",
-                "dibuat": "20210826T115917Z",
-                "dimodifikasi": "20210826T115917Z",
-                "status": "CONFIRMED"
-            },
-            "20211231": {
-                "deskripsi": "Malam Tahun Baru",
-                "dibuat": "20210826T115903Z",
-                "dimodifikasi": "20210826T115903Z",
-                "status": "CONFIRMED"
-            },
-            "20220101": {
-                "deskripsi": "Hari Tahun Baru",
-                "dibuat": "20210826T115917Z",
-                "dimodifikasi": "20210826T115917Z",
-                "status": "CONFIRMED"
-            },
-            "20220201": {
-                "deskripsi": "Tahun Baru Imlek",
-                "dibuat": "20210826T115907Z",
-                "dimodifikasi": "20210826T115907Z",
-                "status": "CONFIRMED"
-            },
-            "20220228": {
-                "deskripsi": "Isra Mikraj Nabi Muhammad",
-                "dibuat": "20211002T072614Z",
-                "dimodifikasi": "20211002T072614Z",
-                "status": "CONFIRMED"
-            },
-            "20220303": {
-                "deskripsi": "Hari Suci Nyepi (Tahun Baru Saka)",
-                "dibuat": "20211002T072614Z",
-                "dimodifikasi": "20211002T072614Z",
-                "status": "CONFIRMED"
-            },
-            "20220415": {
-                "deskripsi": "Wafat Isa Almasih",
-                "dibuat": "20210826T115927Z",
-                "dimodifikasi": "20210826T115927Z",
-                "status": "CONFIRMED"
-            },
-            "20220417": {
-                "deskripsi": "Hari Paskah",
-                "dibuat": "20210826T115907Z",
-                "dimodifikasi": "20210826T115907Z",
-                "status": "CONFIRMED"
-            },
-            "20220421": {
-                "deskripsi": "Hari Kartini",
-                "dibuat": "20210826T115903Z",
-                "dimodifikasi": "20210826T115903Z",
-                "status": "CONFIRMED"
-            },
-            "20220429": {
-                "deskripsi": "Cuti Bersama Idul Fitri",
-                "dibuat": "20220514T084037Z",
-                "dimodifikasi": "20220514T084037Z",
-                "status": "CONFIRMED"
-            },
-            "20220501": {
-                "deskripsi": "Hari Buruh Internasional / Pekerja",
-                "dibuat": "20210826T115917Z",
-                "dimodifikasi": "20210826T115917Z",
-                "status": "CONFIRMED"
-            },
-            "20220502": {
-                "deskripsi": "Hari Idul Fitri",
-                "dibuat": "20211002T072614Z",
-                "dimodifikasi": "20211002T072614Z",
-                "status": "CONFIRMED"
-            },
-            "20220503": {
-                "deskripsi": "Hari Idul Fitri",
-                "dibuat": "20210826T115917Z",
-                "dimodifikasi": "20210826T115917Z",
-                "status": "CONFIRMED"
-            },
-            "20220504": {
-                "deskripsi": "Cuti Bersama Idul Fitri",
-                "dibuat": "20220514T084037Z",
-                "dimodifikasi": "20220514T084037Z",
-                "status": "CONFIRMED"
-            },
-            "20220505": {
-                "deskripsi": "Cuti Bersama Idul Fitri",
-                "dibuat": "20220514T084037Z",
-                "dimodifikasi": "20220514T084037Z",
-                "status": "CONFIRMED"
-            },
-            "20220506": {
-                "deskripsi": "Cuti Bersama Idul Fitri",
-                "dibuat": "20220514T084037Z",
-                "dimodifikasi": "20220514T084037Z",
-                "status": "CONFIRMED"
-            },
-            "20220516": {
-                "deskripsi": "Hari Raya Waisak",
-                "dibuat": "20211002T072614Z",
-                "dimodifikasi": "20211002T072614Z",
-                "status": "CONFIRMED"
-            },
-            "20220526": {
-                "deskripsi": "Kenaikan Isa Al Masih",
-                "dibuat": "20210826T115907Z",
-                "dimodifikasi": "20210826T115907Z",
-                "status": "CONFIRMED"
-            },
-            "20220601": {
-                "deskripsi": "Hari Lahir Pancasila",
-                "dibuat": "20210826T115907Z",
-                "dimodifikasi": "20210826T115907Z",
-                "status": "CONFIRMED"
-            },
-            "20220709": {
-                "deskripsi": "Idul Adha (Lebaran Haji)",
-                "dibuat": "20211002T072614Z",
-                "dimodifikasi": "20211002T072614Z",
-                "status": "CONFIRMED"
-            },
-            "20220730": {
-                "deskripsi": "Satu Muharam / Tahun Baru Hijriah",
-                "dibuat": "20210826T115903Z",
-                "dimodifikasi": "20210826T115903Z",
-                "status": "CONFIRMED"
-            },
-            "20220817": {
-                "deskripsi": "Hari Proklamasi Kemerdekaan R.I.",
-                "dibuat": "20210826T115917Z",
-                "dimodifikasi": "20210826T115917Z",
-                "status": "CONFIRMED"
-            },
-            "20221002": {
-                "deskripsi": "Hari Batik",
-                "dibuat": "20210826T115917Z",
-                "dimodifikasi": "20210826T115917Z",
-                "status": "CONFIRMED"
-            },
-            "20221008": {
-                "deskripsi": "Maulid Nabi Muhammad",
-                "dibuat": "20210826T115903Z",
-                "dimodifikasi": "20210826T115903Z",
-                "status": "CONFIRMED"
-            },
-            "20221024": {
-                "deskripsi": "Diwali / Deepavali",
-                "dibuat": "20210826T115917Z",
-                "dimodifikasi": "20210826T115917Z",
-                "status": "CONFIRMED"
-            },
-            "20221112": {
-                "deskripsi": "Hari Ayah",
-                "dibuat": "20210826T115907Z",
-                "dimodifikasi": "20210826T115907Z",
-                "status": "CONFIRMED"
-            },
-            "20221125": {
-                "deskripsi": "Hari Guru",
-                "dibuat": "20210826T115907Z",
-                "dimodifikasi": "20210826T115907Z",
-                "status": "CONFIRMED"
-            },
-            "20221222": {
-                "deskripsi": "Hari Ibu",
-                "dibuat": "20210826T115903Z",
-                "dimodifikasi": "20210826T115903Z",
-                "status": "CONFIRMED"
-            },
-            "20221224": {
-                "deskripsi": "Malam Natal",
-                "dibuat": "20210826T115927Z",
-                "dimodifikasi": "20210826T115927Z",
-                "status": "CONFIRMED"
-            },
-            "20221225": {
-                "deskripsi": "Hari Raya Natal",
-                "dibuat": "20210826T115927Z",
-                "dimodifikasi": "20210826T115927Z",
-                "status": "CONFIRMED"
-            },
-            "20221231": {
-                "deskripsi": "Malam Tahun Baru",
-                "dibuat": "20210826T115917Z",
-                "dimodifikasi": "20210826T115917Z",
-                "status": "CONFIRMED"
-            },
-            "20230421": {
-                "deskripsi": "Hari Kartini",
-                "dibuat": "20210826T115927Z",
-                "dimodifikasi": "20210826T115927Z",
-                "status": "CONFIRMED"
-            },
-            "20231002": {
-                "deskripsi": "Hari Batik",
-                "dibuat": "20210826T115903Z",
-                "dimodifikasi": "20210826T115903Z",
-                "status": "CONFIRMED"
-            },
-            "20231112": {
-                "deskripsi": "Hari Ayah",
-                "dibuat": "20210826T115927Z",
-                "dimodifikasi": "20210826T115927Z",
-                "status": "CONFIRMED"
-            },
-            "20231125": {
-                "deskripsi": "Hari Guru",
-                "dibuat": "20210826T115927Z",
-                "dimodifikasi": "20210826T115927Z",
-                "status": "CONFIRMED"
-            },
-            "20231222": {
-                "deskripsi": "Hari Ibu",
-                "dibuat": "20210826T115903Z",
-                "dimodifikasi": "20210826T115903Z",
-                "status": "CONFIRMED"
-            },
-            "created-at": "2022-05-16 04:01"
+            "2023-01-01": {
+                "summary": "Hari Tahun Baru"
+            },
+            "2023-01-22": {
+                "summary": "Tahun Baru Imlek"
+            },
+            "2023-01-23": {
+                "summary": "Cuti Bersama Tahun Baru Imlek"
+            },
+            "2023-02-18": {
+                "summary": "Isra Mikraj Nabi Muhammad"
+            },
+            "2023-03-22": {
+                "summary": "Hari Suci Nyepi (Tahun Baru Saka)"
+            },
+            "2023-03-23": {
+                "summary": "Cuti Bersama Hari Suci Nyepi (Tahun Baru Saka)"
+            },
+            "2023-04-07": {
+                "summary": "Wafat Isa Almasih"
+            },
+            "2023-04-19": {
+                "summary": "Cuti Bersama Idul Fitri"
+            },
+            "2023-04-20": {
+                "summary": "Cuti Bersama Idul Fitri"
+            },
+            "2023-04-21": {
+                "summary": "Cuti Bersama Idul Fitri"
+            },
+            "2023-04-22": {
+                "summary": "Hari Idul Fitri"
+            },
+            "2023-04-23": {
+                "summary": "Hari Idul Fitri"
+            },
+            "2023-04-24": {
+                "summary": "Cuti Bersama Idul Fitri"
+            },
+            "2023-04-25": {
+                "summary": "Cuti Bersama Idul Fitri"
+            },
+            "2023-05-01": {
+                "summary": "Hari Buruh Internasional / Pekerja"
+            },
+            "2023-05-18": {
+                "summary": "Kenaikan Isa Al Masih"
+            },
+            "2023-06-01": {
+                "summary": "Hari Lahir Pancasila"
+            },
+            "2023-06-02": {
+                "summary": "Cuti Bersama Waisak"
+            },
+            "2023-06-04": {
+                "summary": "Hari Raya Waisak"
+            },
+            "2023-06-29": {
+                "summary": "Idul Adha (Lebaran Haji)"
+            },
+            "2023-07-19": {
+                "summary": "Satu Muharam / Tahun Baru Hijriah"
+            },
+            "2023-08-17": {
+                "summary": "Hari Proklamasi Kemerdekaan R.I."
+            },
+            "2023-09-28": {
+                "summary": "Maulid Nabi Muhammad"
+            },
+            "2023-12-25": {
+                "summary": "Hari Raya Natal"
+            },
+            "2023-12-26": {
+                "summary": "Cuti Bersama Natal (Hari Tinju)"
+            },
+            "2024-01-01": {
+                "summary": "Hari Tahun Baru"
+            },
+            "2024-02-08": {
+                "summary": "Isra Mikraj Nabi Muhammad"
+            },
+            "2024-02-10": {
+                "summary": "Tahun Baru Imlek"
+            },
+            "2024-03-11": {
+                "summary": "Hari Suci Nyepi (Tahun Baru Saka)"
+            },
+            "2024-03-29": {
+                "summary": "Wafat Isa Almasih"
+            },
+            "2024-04-10": {
+                "summary": "Hari Idul Fitri"
+            },
+            "2024-04-11": {
+                "summary": "Hari Idul Fitri"
+            },
+            "2024-05-01": {
+                "summary": "Hari Buruh Internasional / Pekerja"
+            },
+            "2024-05-09": {
+                "summary": "Kenaikan Isa Al Masih"
+            },
+            "2024-05-23": {
+                "summary": "Hari Raya Waisak"
+            },
+            "2024-06-01": {
+                "summary": "Hari Lahir Pancasila"
+            },
+            "2024-06-17": {
+                "summary": "Idul Adha (Lebaran Haji)"
+            },
+            "2024-07-07": {
+                "summary": "Satu Muharam / Tahun Baru Hijriah"
+            },
+            "2024-08-17": {
+                "summary": "Hari Proklamasi Kemerdekaan R.I."
+            },
+            "2024-09-15": {
+                "summary": "Maulid Nabi Muhammad"
+            },
+            "2024-12-25": {
+                "summary": "Hari Raya Natal"
+            },
+            "info": {
+                "author": "guangrei",
+                "link": "https://github.com/guangrei",
+                "updated": "20230725 09:09:00"
+            }
         }';
     }
 }
