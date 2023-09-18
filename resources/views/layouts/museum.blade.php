@@ -2,6 +2,16 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 
 <head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-V7SPTCQH9B"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'G-V7SPTCQH9B');
+    </script>
+
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=.5">
     <!-- <meta name="viewport" content="initial-scale=1, maximum-scale=1"> -->
