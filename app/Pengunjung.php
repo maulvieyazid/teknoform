@@ -6,6 +6,12 @@ use Illuminate\Database\Eloquent\Model;
 
 class Pengunjung extends Model
 {
+    const KATEGORI_UMUM = 'Umum';
+    const KATEGORI_SD = 'SD';
+    const KATEGORI_SMP = 'SMP';
+    const KATEGORI_SMA = 'SMA';
+    const KATEGORI_PT = 'Perguruan Tinggi';
+    
     protected $primaryKey = 'id_pengunjung';
 
     protected $table = 'pengunjung';
@@ -16,5 +22,7 @@ class Pengunjung extends Model
         'instansi',
         'pesan_kesan',
         'jumlah_pengunjung',
+        'asal_pengunjung',
+        'kategori_pengunjung',
     ];
 }
