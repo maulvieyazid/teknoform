@@ -9,15 +9,12 @@ use App\Koleksi;
 use App\Majalah;
 use App\Agenda;
 use App\Berita;
-use App\Galeri;
 use App\Kategori;
 use App\Merchandise;
 use App\KritikSaran;
 use App\Pengunjung;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Storage;
-// use App\Http\Controllers\DonasiController;
-use Illuminate\Support\Facades\Http;
 
 class MuseumController extends Controller
 {
@@ -99,13 +96,8 @@ class MuseumController extends Controller
 
     public function merchandise()
     {
-        // $response = Http::get('https://jsonplaceholder.typicode.com/photos');
-        // $response = Http::get('https://jsonplaceholder.typicode.com/albums/1/photos');
-        // dd($response->json());
-        // $katalog = collect($response->json())->take(20)->paginate(9);
-        // $katalog = collect($response->json())->paginate(9);
-        // $merchandise = Merchandise::find(1);
         $merchandise = Merchandise::paginate(9);
+        
         return view('merchandise', compact(
             // 'katalog',
             'merchandise'
@@ -114,10 +106,6 @@ class MuseumController extends Controller
 
     public function merchandise_produk(Merchandise $merchandise)
     {
-        // $response = Http::get('https://jsonplaceholder.typicode.com/photos');
-        // $response = Http::get('https://jsonplaceholder.typicode.com/photos/'.$id);
-        // $produk = $response->json();
-        // $merchandise = Merchandise::find($id);
         return view('produk', compact(
             // 'produk',
             'merchandise'
@@ -158,7 +146,6 @@ class MuseumController extends Controller
         $donasi->save();
 
         return redirect('/')->with('status', 'Berhasil menambahkan data donasi, tunggu konfirmasi dari pihak museum');
-        // return redirect()->back()->with('status', 'Berhasil menambahkan data donasi, tunggu konfirmasi dari pihak museum');
     }
 
     public function simpan_saran(Request $request)
