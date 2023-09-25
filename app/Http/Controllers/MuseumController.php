@@ -90,7 +90,16 @@ class MuseumController extends Controller
 
     public function tambah_data_tamu(Request $request)
     {
-        Pengunjung::create($request->all());
+        Pengunjung::create([
+            'nama_pengunjung'     => $request->nama_pengunjung,
+            'instansi'            => $request->instansi,
+            'pesan_kesan'         => $request->pesan_kesan,
+            'jumlah_pengunjung'   => $request->jumlah_pengunjung,
+            'asal_pengunjung'     => $request->asal_pengunjung,
+            'kategori_pengunjung' => $request->kategori_pengunjung,
+            'input_dari'          => Pengunjung::DARI_BUKU_TAMU,
+        ]);
+
         return redirect()->back()->with('status', 'Terimakasih sudah mengisi buku tamu');
     }
 
