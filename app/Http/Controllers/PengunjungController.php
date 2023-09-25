@@ -41,14 +41,17 @@ class PengunjungController extends Controller
         ], [
             'created_at.required' => 'Tanggal Selesai Kunjungan tidak boleh kosong',
         ]);
-        
-        $pengunjung                    = new Pengunjung;
-        $pengunjung->nama_pengunjung   = $request->nama_pengunjung;
-        $pengunjung->alamat            = $request->alamat;
-        $pengunjung->instansi          = $request->instansi;
-        $pengunjung->pesan_kesan       = $request->pesan_kesan;
-        $pengunjung->jumlah_pengunjung = $request->jumlah_pengunjung;
-        $pengunjung->created_at        = $request->created_at;
+
+        $pengunjung                      = new Pengunjung;
+        $pengunjung->nama_pengunjung     = $request->nama_pengunjung;
+        $pengunjung->alamat              = $request->alamat;
+        $pengunjung->instansi            = $request->instansi;
+        $pengunjung->pesan_kesan         = $request->pesan_kesan;
+        $pengunjung->jumlah_pengunjung   = $request->jumlah_pengunjung;
+        $pengunjung->asal_pengunjung     = $request->asal_pengunjung;
+        $pengunjung->kategori_pengunjung = $request->kategori_pengunjung;
+        $pengunjung->input_dari          = $request->input_dari;
+        $pengunjung->created_at          = $request->created_at;
         $pengunjung->save();
 
         return redirect()->route('pengunjung.index')->with('success', 'Data Pengunjung Berhasil Disimpan');
@@ -91,12 +94,15 @@ class PengunjungController extends Controller
             'created_at.required' => 'Tanggal Selesai Kunjungan tidak boleh kosong',
         ]);
 
-        $pengunjung->nama_pengunjung   = $request->nama_pengunjung;
-        $pengunjung->alamat            = $request->alamat;
-        $pengunjung->instansi          = $request->instansi;
-        $pengunjung->pesan_kesan       = $request->pesan_kesan;
-        $pengunjung->jumlah_pengunjung = $request->jumlah_pengunjung;
-        $pengunjung->created_at        = $request->created_at;
+        $pengunjung->nama_pengunjung     = $request->nama_pengunjung;
+        $pengunjung->alamat              = $request->alamat;
+        $pengunjung->instansi            = $request->instansi;
+        $pengunjung->pesan_kesan         = $request->pesan_kesan;
+        $pengunjung->jumlah_pengunjung   = $request->jumlah_pengunjung;
+        $pengunjung->asal_pengunjung     = $request->asal_pengunjung;
+        $pengunjung->kategori_pengunjung = $request->kategori_pengunjung;
+        $pengunjung->input_dari          = $request->input_dari;
+        $pengunjung->created_at          = $request->created_at;
         $pengunjung->save();
 
         return redirect()->route('pengunjung.index')->with('success', 'Data Pengunjung Berhasil Diubah');

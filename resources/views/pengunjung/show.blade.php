@@ -29,42 +29,69 @@
                                     @csrf
                                     <div class="form-body">
                                         <div class="row">
-                                            <div class="col-md-2">
+                                            <div class="col-md-3">
                                                 <label>Nama Pengunjung</label>
                                             </div>
-                                            <div class="col-md-10 form-group">
-                                                <input type="text" id="nama_pengunjung" class="form-control"
-                                                    name="nama_pengunjung" placeholder="Nama Pengunjung"
-                                                    value="{{ $pengunjung->nama_pengunjung }}">
+                                            <div class="col-md-9 form-group">
+                                                <input type="text" id="nama_pengunjung" class="form-control" name="nama_pengunjung" value="{{ $pengunjung->nama_pengunjung }}" readonly>
                                             </div>
-                                            <div class="col-md-2">
+
+                                            <div class="col-md-3">
                                                 <label>Alamat</label>
                                             </div>
-                                            <div class="col-md-10 form-group">
-                                                <input type="text" id="alamat" class="form-control" name="alamat"
-                                                    placeholder="Alamat" value="{{ $pengunjung->alamat }}">
+                                            <div class="col-md-9 form-group">
+                                                <input type="text" id="alamat" class="form-control" name="alamat" value="{{ $pengunjung->alamat }}" readonly>
                                             </div>
-                                            <div class="col-md-2">
+
+                                            <div class="col-md-3">
+                                                <label>Kota Asal</label>
+                                            </div>
+                                            <div class="col-md-9 form-group">
+                                                <input type="text" id="asal_pengunjung" class="form-control" name="asal_pengunjung" value="{{ $pengunjung->asal_pengunjung }}" readonly>
+                                            </div>
+
+                                            <div class="col-md-3">
+                                                <label>Kategori Pengunjung</label>
+                                            </div>
+                                            <div class="col-md-9 form-group">
+                                                <input type="text" id="asal_pengunjung" class="form-control" name="asal_pengunjung" value="{{ $pengunjung->kategori_pengunjung }}" readonly>
+                                            </div>
+
+                                            <div class="col-md-3">
                                                 <label>Instansi</label>
                                             </div>
-                                            <div class="col-md-10 form-group">
-                                                <input type="text" id="instansi" class="form-control" name="instansi"
-                                                    placeholder="Instansi / Sekolah" value="{{ $pengunjung->instansi }}">
+                                            <div class="col-md-9 form-group">
+                                                <input type="text" id="instansi" class="form-control" name="instansi" value="{{ $pengunjung->instansi }}" readonly>
                                             </div>
-                                            <div class="col-md-2">
+
+                                            <div class="col-md-3">
+                                                <label>Jumlah Pengunjung</label>
+                                            </div>
+                                            <div class="col-md-9 form-group">
+                                                <input type="text" id="jumlah_pengunjung" class="form-control" name="jumlah_pengunjung" value="{{ $pengunjung->jumlah_pengunjung }}" readonly>
+                                            </div>
+
+                                            <div class="col-md-3">
                                                 <label>Selesai Kunjungan</label>
                                             </div>
-                                            <div class="col-md-10 form-group">
-                                                <input type="text" class="form-control"
-                                                    value="{{ $pengunjung->created_at->translatedFormat('l, d F Y H:i:s') }}">
+                                            <div class="col-md-9 form-group">
+                                                <input type="text" class="form-control" value="{{ $pengunjung->created_at->translatedFormat('l, d F Y H:i:s') ?? '' }}" readonly>
                                             </div>
-                                            <div class="col-md-2">
+
+                                            <div class="col-md-3">
+                                                <label>Dari</label>
+                                            </div>
+                                            <div class="col-md-9 form-group">
+                                                <input type="text" id="input_dari" class="form-control" name="input_dari" value="{{ $pengunjung->input_dari }}" readonly>
+                                            </div>
+
+                                            <div class="col-md-3">
                                                 <label>Pesan / Kesan</label>
                                             </div>
                                             <div class="col-md-12 form-group">
-                                                <textarea name="pesan_kesan"
-                                                    id="pesan_kesan">{!! $pengunjung->pesan_kesan !!}</textarea>
+                                                <textarea name="pesan_kesan" id="pesan_kesan" readonly>{!! $pengunjung->pesan_kesan !!}</textarea>
                                             </div>
+
                                         </div>
                                     </div>
                                 </form>
@@ -84,7 +111,6 @@
                 .catch(error => {
                     console.error(error);
                 });
-
         </script>
     @endpush
 @endsection

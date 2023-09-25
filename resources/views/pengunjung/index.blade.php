@@ -34,6 +34,7 @@
                                 <th>Instansi</th>
                                 <th>Jml Pengunjung</th>
                                 <th>Selesai Kunjungan</th>
+                                <th>Dari</th>
                                 <th>Aksi</th>
                             </tr>
                         </thead>
@@ -44,7 +45,8 @@
                                     <td>{{ $pengunjung->nama_pengunjung }}</td>
                                     <td>{{ $pengunjung->instansi }}</td>
                                     <td>{{ $pengunjung->jumlah_pengunjung }}</td>
-                                    <td>{{ optional($pengunjung->created_at)->translatedFormat('l, d F Y H:i:s') }}</td>
+                                    <td>{{ $pengunjung->created_at->translatedFormat('l, d F Y H:i:s') ?? '-' }}</td>
+                                    <td>{{ $pengunjung->input_dari }}</td>
                                     <td>
                                         <div class="btn-group dropstart  mb-1">
                                             <button type="button" class="btn btn-info dropdown-toggle"
