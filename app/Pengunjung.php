@@ -11,6 +11,9 @@ class Pengunjung extends Model
     const KATEGORI_SMP = 'SMP';
     const KATEGORI_SMA = 'SMA';
     const KATEGORI_PT = 'Perguruan Tinggi';
+
+    const DARI_BUKU_TAMU = 'Buku Tamu';
+    const DARI_VIRTUAL_TOUR = 'Virtual Tour';
     
     protected $primaryKey = 'id_pengunjung';
 
@@ -24,5 +27,6 @@ class Pengunjung extends Model
         'jumlah_pengunjung',
         'asal_pengunjung',
         'kategori_pengunjung',
+        'input_dari',
     ];
 }

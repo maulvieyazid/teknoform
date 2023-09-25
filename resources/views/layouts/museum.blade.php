@@ -217,7 +217,7 @@
             <div class="m-3"><a href="{{ Request::is('katalog') ? '#' : url('katalog') }}" class="text-white">MERCHANDISE</a></div>
             <div class="m-3"><a href="{{ Request::is('ensiklopedia') ? '#' : url('ensiklopedia') }}" class="text-white">ENSIKLOPEDIA</a></div>
             <div class="m-3"><a href="#" class="text-white">LAPORAN</a></div>
-            <div class="m-3"><a href="/360" class="text-white">VIRTUAL TOUR</a></div>
+            <div class="m-3"><a href="/entry-360" class="text-white">VIRTUAL TOUR</a></div>
         </div>
     </header>
     @yield('content')
