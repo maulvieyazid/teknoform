@@ -15,7 +15,10 @@ use Illuminate\Support\Facades\Storage;
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::get('360', 'HomeController@virtual_tour');
+
+Route::get('360', 'HomeController@virtual_tour')->name('virtual_tour');
+Route::get('entry-360', 'HomeController@entry_virtual_tour')->name('entry_virtual_tour');
+Route::post('entry-360', 'HomeController@store_entry_virtual_tour')->name('store_entry_virtual_tour');
 
 /* Route::get('file-buat', function () {
     // Storage::cloud()->put("1uDEwrHaPT7hniJrQdSaFTnHOJudEV1Zh/uji.pdf", '');
@@ -54,6 +57,32 @@ Route::get('file-liat', function () {
 
 Auth::routes(['register' => false]);
 
+/* Route::get('/lmoijadpkslemi', function () {
+    $allCities = [];
+
+    $provinceIds = [11, 51, 36, 17, 34, 31, 75, 15, 32, 33, 35, 61, 63, 62, 64, 65, 19, 21, 18, 81, 82, 52, 53, 92, 91, 14, 76, 73, 72, 74, 71, 13, 16, 12];
+
+    // Loop melalui semua provinceId yang Anda tentukan
+    foreach ($provinceIds as $provinceId) {
+        // $provinceUrl = "https://emsifa.github.io/api-wilayah-indonesia/api/regencies/{$provinceId}.json";
+        $provinceUrl = "http://api.iksgroup.co.id/apilokasi/kabupaten?provinsi={$provinceId}";
+
+        // Melakukan permintaan API ke provinsi
+        $provinceData = json_decode(file_get_contents($provinceUrl), true);
+
+        // Mengambil data dari atribut "data" dan menggabungkannya dengan $allData
+        if (isset($provinceData['data'])) {
+            $allCities = array_merge($allCities, $provinceData['data']);
+        }
+    }
+
+    $jsonData = json_encode($allCities, JSON_PRETTY_PRINT);
+
+
+    file_put_contents('/atad/web-dinamika/teknoform/public/data_kota.json', $jsonData);
+
+    echo "Data telah ditulis ke dalam file";
+}); */
 // Route::get('/info', function () {
 //         return phpinfo();
 //     });
@@ -112,5 +141,4 @@ Route::middleware(['auth'])->group(function () {
 
     /** Berita Route */
     Route::resource('berita', 'BeritaController');
-
 });
