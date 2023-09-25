@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Pengunjung;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Cookie;
 
 class HomeController extends Controller
@@ -21,12 +20,18 @@ class HomeController extends Controller
 
     public function virtual_tour()
     {
+        // Cek apakah ada cookie "has_entered_virtual_tour_data"
+        // Kalo tidak ada, maka alihkan ke halaman entry virtual tour
+        $cookie = Cookie::get('has_entered_virtual_tour_data', null);
+        if (!$cookie) return redirect()->route('entry_virtual_tour');
+
         return view('360');
     }
 
     function entry_virtual_tour(Request $request)
     {
-        // Cek jika ada cookie "has_entered_virtual_tour_data", maka langsung redirect ke virtual tour
+        // Cek apakah ada cookie "has_entered_virtual_tour_data", 
+        // Kalo ada maka langsung redirect ke virtual tour
         $cookie = $request->cookie('has_entered_virtual_tour_data', null);
         if ($cookie) return redirect()->route('virtual_tour');
 
