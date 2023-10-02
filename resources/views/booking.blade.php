@@ -6,7 +6,7 @@
 @section('content')
     <div class="section" id="home" style="min-height: 116vh; background-image: url('{{ asset('backgrounds/desain-website-museum_bg_02_optimized.jpg') }}');">
         <div class="container py-5">
-            <form action="{{ route('tambah-booking') }}" method="POST" enctype="multipart/form-data" onsubmit="document.getElementById('btnSimpan').disabled = true;">
+            <form action="{{ route('tambah-booking') }}" method="POST" enctype="multipart/form-data" onsubmit="$('#btnSimpan').prop('disabled', true)">
                 @csrf
                 <h1>Booking Online</h1>
                 <div class="mb-2">
