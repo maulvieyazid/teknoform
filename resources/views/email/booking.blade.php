@@ -1,6 +1,5 @@
 @extends('email.layout')
 @section('mail-section')
-
     @if ($status == 'setuju')
         <p>Hi <b>{{ $nama }}</b>,</p>
         <p>Terima kasih telah mengunjungi website Museum Teknoform dan melakukan registrasi untuk melakukan appointment
@@ -27,5 +26,24 @@
             wajib menggunakan masker, mencuci tangan saat memasuki area kunjungan serta menjaga jarak dengan pengunjung yang
             lain saat di dalam area.
             Selamat menikmati kunjunganmu di Museum Teknoform!</p>
+    @endif
+
+    @if ($status == 'notif-booking')
+        <p>Halo Museum Teknoform,</p>
+        <p>
+            <b>{{ $nama }}</b> telah mengirim permintaan kunjungan dengan keterangan sebagai berikut:
+        </p>
+        <p>Nama Pengunjung : {{ $nama }}</p>
+        <p>Instansi / Sekolah : {{ $instansi }}</p>
+        <p>No. Telp : {{ $telp }}</p>
+        <p>Tanggal : {{ $hari }}, {{ $tanggal }}</p>
+        <p>Waktu : {{ $pukul }}</p>
+        <p>Jumlah : {{ $jumlah_peserta }} Orang</p>
+
+        <p>
+            Informasi lebih lanjut tentang pengajuan Kunjungan Museum Teknoform dapat dilihat di CMS Museum Teknoform oleh Admin.
+        </p>
+
+        <p>Terima Kasih</p>
     @endif
 @endsection

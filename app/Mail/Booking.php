@@ -12,7 +12,8 @@ class Booking extends Mailable
 {
     use Queueable, SerializesModels;
 
-    public $status, $nama, $hari, $tanggal, $pukul;
+    public $status, $nama, $telp, $instansi, $jumlah_peserta;
+    public $hari, $tanggal, $pukul;
 
     /**
      * Create a new message instance.
@@ -21,11 +22,20 @@ class Booking extends Mailable
      */
     public function __construct($request)
     {
-        $this->status  = $request->status;
-        $this->nama    = $request->nama;
-        $this->hari    = Carbon::parse($request->tanggal_kunjungan)->locale('id')->translatedFormat('l');
-        $this->tanggal = Carbon::parse($request->tanggal_kunjungan)->locale('id')->translatedFormat('d F Y');
-        $this->pukul   = Carbon::parse($request->tanggal_kunjungan)->locale('id')->translatedFormat('H:i:s');
+        // Kalo tanggal kunjungan nya null, maka default nya now
+        $carbon_date = $request->tanggal_kunjungan ?? 'now';
+        $carbon_date = Carbon::parse($carbon_date)->locale('id');
+
+
+        $this->status         = $request->status ?? null;
+        $this->nama           = $request->nama ?? null;
+        $this->telp           = $request->telp ?? null;
+        $this->instansi       = $request->instansi ?? null;
+        $this->jumlah_peserta = $request->jumlah_peserta ?? null;
+
+        $this->hari           = $carbon_date->translatedFormat('l');
+        $this->tanggal        = $carbon_date->translatedFormat('d F Y');
+        $this->pukul          = $carbon_date->translatedFormat('H:i');
     }
 
     /**
@@ -57,6 +67,11 @@ class Booking extends Mailable
                     'nama'   => $this->nama
                 ]);
             // ->view('booking.email.batal');
+        }
+        if ($this->status == 'notif-booking') {
+            return $this
+                ->subject('Notifikasi Booking Online Teknoform')
+                ->view('email.booking');
         }
     }
 }

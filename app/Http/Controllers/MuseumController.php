@@ -12,7 +12,9 @@ use App\Berita;
 use App\Kategori;
 use App\Merchandise;
 use App\KritikSaran;
+use App\Mail\Booking as MailBooking;
 use App\Pengunjung;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Storage;
 
@@ -63,7 +65,7 @@ class MuseumController extends Controller
             $path = Storage::disk('lampiran_surat_booking')->putFile(null, $lampiran_surat);
 
             // Tambahkan relative path ke $path
-            $path = $rel_path .'/'. $path;
+            $path = $rel_path . '/' . $path;
         }
 
         // Simpan data Booking
@@ -78,8 +80,22 @@ class MuseumController extends Controller
         $booking->lampiran_surat    = $path ?? null;
         $booking->save();
 
+
+        /** Kirim email notifikasi ke Penjaga Museum */
+
+        // Ubah status nya agar terdeteksi di view email.
+        // NOTE : ini tidak mengubah data di database, data yang sudah tersimpan tetap terjaga
+        $booking->status = 'notif-booking';
+
+        $tos = ['teknoform@dinamika.ac.id', 'galih@dinamika.ac.id'];
+
+        foreach ($tos as $to) {
+            Mail::to($to)->send(new MailBooking($booking));
+        }
+        /** Kirim email notifikasi ke Penjaga Museum */
+
         return redirect('/')->with('status', 'Berhasil menambahkan data booking, tunggu konfirmasi dari pihak museum');
-        
+
         // return redirect()->back()->with('status', 'Berhasil menambahkan data booking, tunggu konfirmasi dari pihak museum');
     }
 
@@ -106,7 +122,7 @@ class MuseumController extends Controller
     public function merchandise()
     {
         $merchandise = Merchandise::paginate(9);
-        
+
         return view('merchandise', compact(
             // 'katalog',
             'merchandise'
