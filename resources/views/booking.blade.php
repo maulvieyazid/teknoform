@@ -1,14 +1,12 @@
 @extends('layouts.museum')
 @push('css')
     <link rel="stylesheet" href="{{ asset('vendors/flatpickr/flatpickr.min.css') }}">
-
 @endpush
 
 @section('content')
-    <div class="section" id="home"
-        style="min-height: 116vh; background-image: url('{{ asset('backgrounds/desain-website-museum_bg_02_optimized.jpg') }}');">
+    <div class="section" id="home" style="min-height: 116vh; background-image: url('{{ asset('backgrounds/desain-website-museum_bg_02_optimized.jpg') }}');">
         <div class="container py-5">
-            <form action="{{ route('tambah-booking') }}" method="POST" enctype="multipart/form-data">
+            <form action="{{ route('tambah-booking') }}" method="POST" enctype="multipart/form-data" onsubmit="document.getElementById('btnSimpan').disabled = true;">
                 @csrf
                 <h1>Booking Online</h1>
                 <div class="mb-2">
@@ -50,11 +48,11 @@
                                 </div>
                                 <div class="form-group">
                                     <label>Tanggal Kunjungan <span style="color:red">*</span></label>
-                                    <input name="tanggal_kunjungan" id="tanggal_kunjungan" type="text" class="form-control" autocomplete="off"
-                                        required />
+                                    <input name="tanggal_kunjungan" id="tanggal_kunjungan" type="text" class="form-control" autocomplete="off" required />
                                 </div>
-                                <button type="submit" name="simpan" class="btn text-white border rounded-0 btn-outline-secondary"
-                                    style="width: 10rem;">Kirim</button>
+                                <button type="submit" name="simpan" id="btnSimpan" class="btn text-white border rounded-0 btn-outline-secondary" style="width: 10rem;">
+                                    Kirim
+                                </button>
                             </div>
                         </div>
                     </div>
@@ -102,8 +100,8 @@
         function hariBesar(date) {
             let hari = {!! $hari !!}
             /* Entah kenapa, date flatpickr harus ditambahkan satu hari
-            * biar dia bisa membandingkan dengan benar
-            */
+             * biar dia bisa membandingkan dengan benar
+             */
             let plusOneDay = date.setDate(date.getDate() + 1);
             return hari.includes(new Date(plusOneDay).toISOString().substring(0, 10));
         }
@@ -127,6 +125,5 @@
                 sabtuMinggu, hariBesar // Urutan ini jangan diubah, nanti hasilnya bisa beda
             ]
         })
-
     </script>
 @endpush
