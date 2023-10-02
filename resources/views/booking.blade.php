@@ -26,7 +26,7 @@
                                 </div>
                                 <div class="form-group">
                                     <label>No. HP <span style="color:red">*</span></label>
-                                    <input name="telp" type="text" class="form-control" required />
+                                    <input name="telp" type="text" class="form-control" required oninput="$(this).val($(this).val().replace(/\D/g,''))" />
                                 </div>
                                 <div class="form-group">
                                     <label>Lampiran Surat (opsional)</label>
