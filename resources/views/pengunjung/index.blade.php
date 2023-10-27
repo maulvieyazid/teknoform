@@ -19,6 +19,13 @@
                 <div class="card-header">
                     <div class="row">
                         <div class="col d-flex justify-content-end">
+                            <a href="{{ route('excel.pengunjung') }}" class="btn btn-success me-3" target="_blank">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-file-ruled" viewBox="0 0 16 16">
+                                    <path d="M2 2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V2zm2-1a1 1 0 0 0-1 1v4h10V2a1 1 0 0 0-1-1H4zm9 6H6v2h7V7zm0 3H6v2h7v-2zm0 3H6v2h6a1 1 0 0 0 1-1v-1zm-8 2v-2H3v1a1 1 0 0 0 1 1h1zm-2-3h2v-2H3v2zm0-3h2V7H3v2z"/>
+                                  </svg>
+                                Download Excel
+                            </a>
+
                             <a href="{{ route('pengunjung.create') }}" class="btn btn-primary ">
                                 <i class="bi bi-plus-circle" style="vertical-align: sub"></i> Tambah
                             </a>
@@ -49,24 +56,19 @@
                                     <td>{{ $pengunjung->input_dari }}</td>
                                     <td>
                                         <div class="btn-group dropstart  mb-1">
-                                            <button type="button" class="btn btn-info dropdown-toggle"
-                                                data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                            <button type="button" class="btn btn-info dropdown-toggle" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                                 Aksi
                                             </button>
                                             <div class="dropdown-menu">
-                                                <a class="dropdown-item"
-                                                    href="{{ route('pengunjung.show', $pengunjung->id_pengunjung) }}">
+                                                <a class="dropdown-item" href="{{ route('pengunjung.show', $pengunjung->id_pengunjung) }}">
                                                     <i class="bi bi-eye-fill me-50"></i> Lihat
                                                 </a>
-                                                <a class="dropdown-item"
-                                                    href="{{ route('pengunjung.edit', $pengunjung->id_pengunjung) }}">
+                                                <a class="dropdown-item" href="{{ route('pengunjung.edit', $pengunjung->id_pengunjung) }}">
                                                     <i class="bi bi-pencil-square me-50"></i> Ubah
                                                 </a>
-                                                <a class="dropdown-item" href=""
-                                                    onclick="event.preventDefault(); hapus(this, ['{{ $pengunjung->nama_pengunjung }}', '{{ $pengunjung->instansi }}'])">
+                                                <a class="dropdown-item" href="" onclick="event.preventDefault(); hapus(this, ['{{ $pengunjung->nama_pengunjung }}', '{{ $pengunjung->instansi }}'])">
                                                     <i class="bi bi-trash-fill me-50"></i> Hapus
-                                                    <form action="{{ route('pengunjung.destroy', $pengunjung->id_pengunjung) }}"
-                                                        method="POST" style="display: none;">
+                                                    <form action="{{ route('pengunjung.destroy', $pengunjung->id_pengunjung) }}" method="POST" style="display: none;">
                                                         @csrf
                                                         @method('DELETE')
                                                     </form>
@@ -107,7 +109,6 @@
                     btn.children[1].submit();
                 }
             }
-
         </script>
     @endpush
 @endsection

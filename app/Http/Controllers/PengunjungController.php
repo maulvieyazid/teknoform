@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Pengunjung;
 use Illuminate\Http\Request;
+use Shuchkin\SimpleXLSXGen;
 
 class PengunjungController extends Controller
 {
@@ -119,5 +120,48 @@ class PengunjungController extends Controller
         $pengunjung->delete();
 
         return redirect()->route('pengunjung.index')->with('success', 'Data Pengunjung Berhasil Dihapus');
+    }
+
+    function excelPengunjung()
+    {
+        $pengunjung = Pengunjung::orderBy('id_pengunjung')->get();
+
+        $data = [
+            [
+                '<style border="thin"><center>' . 'Nama Pengunjung' . '</center></style>',
+                '<style border="thin"><center>' . 'Alamat' . '</center></style>',
+                '<style border="thin"><center>' . 'Instansi' . '</center></style>',
+                '<style border="thin"><center>' . 'Pesan Kesan' . '</center></style>',
+                '<style border="thin"><center>' . 'Jumlah Pengunjung' . '</center></style>',
+                '<style border="thin"><center>' . 'Asal Pengunjung' . '</center></style>',
+                '<style border="thin"><center>' . 'Kategori Pengunjung' . '</center></style>',
+                '<style border="thin"><center>' . 'Input Dari' . '</center></style>',
+                '<style border="thin"><center>' . 'Dibuat' . '</center></style>',
+            ]
+        ];
+
+        foreach ($pengunjung as $row) {
+            $data[] = [
+                $row['nama_pengunjung'],
+                $row['alamat'],
+                $row['instansi'],
+                $row['pesan_kesan'],
+                '<center>' . $row['jumlah_pengunjung'] . '</center>',
+                $row['asal_pengunjung'],
+                $row['kategori_pengunjung'],
+                $row['input_dari'],
+                $row['created_at'],
+            ];
+        }
+
+        $xlsx = SimpleXLSXGen::fromArray($data);
+        $xlsx->setDefaultFontSize(11);
+
+        // Set width semua kolom menjadi 20
+        foreach ($data[0] as $key => $value) {
+            $xlsx->setColWidth($key + 1, 20);
+        }
+
+        $xlsx->downloadAs('Data Pengunjung Museum.xlsx');
     }
 }

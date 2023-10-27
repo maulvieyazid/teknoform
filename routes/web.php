@@ -2,7 +2,6 @@
 
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
-use Monolog\Handler\RotatingFileHandler;
 use Illuminate\Support\Facades\Storage;
 
 /*
@@ -86,6 +85,7 @@ Auth::routes(['register' => false]);
 // Route::get('/info', function () {
 //         return phpinfo();
 //     });
+
 Route::get('/', 'MuseumController@index');
 Route::get('/booking-online', 'MuseumController@booking')->name('booking-online');
 Route::post('/booking-online', 'MuseumController@tambah_booking')->name('tambah-booking');
@@ -104,6 +104,8 @@ Route::get('/ensiklopedia', 'MuseumController@ensiklopedia')->name('ensiklopedia
 Route::get('/ensiklopedia/{koleksi}', 'MuseumController@ensiklopedia_koleksi')->name('ensiklopedia-koleksi');
 Route::get('show/file/{majalah}', 'MajalahController@showFile')->name('majalah.show.file');
 Route::get('download/file/{majalah}', 'MajalahController@downloadFile')->name('majalah.download.file');
+
+Route::get('/excel-pengunjung', 'PengunjungController@excelPengunjung')->name('excel.pengunjung');
 
 Route::middleware(['auth'])->group(function () {
     /** Home Route */
