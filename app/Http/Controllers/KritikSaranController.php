@@ -14,7 +14,9 @@ class KritikSaranController extends Controller
      */
     public function index()
     {
-        $semuaKritiksaran = KritikSaran::latest()->get();
+        $semuaKritiksaran = KritikSaran::select('id_saran', 'nama', 'created_at')
+            ->latest()
+            ->get();
         return view('kritik_saran.index', compact('semuaKritiksaran'));
     }
 

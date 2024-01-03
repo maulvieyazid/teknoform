@@ -5,6 +5,11 @@
     <link rel="stylesheet" href="{{ asset('vendors/sweetalert2/sweetalert2.min.css') }}">
 @endpush
 
+@php
+    // use Illuminate\Support\Str;
+@endphp
+
+
 @section('content')
     <div class="page-heading">
         <div class="page-title">
@@ -32,7 +37,7 @@
                                 <th>No</th>
                                 <th>Nama</th>
                                 <th>Dibuat</th>
-                                <th>Isi Pesan</th>
+                                {{-- <th>Isi Pesan</th> --}}
                                 <th>Aksi</th>
                             </tr>
                         </thead>
@@ -43,7 +48,7 @@
                                     <td>{{ $kritiksaran->nama }}</td>
                                     <td>{{ $kritiksaran->created_at->translatedFormat('l, d F Y H:i:s') }}</td>
                                     <td>
-                                        {{ mb_strimwidth($kritiksaran->pesan, 0, 25, '...') }}
+                                        {{-- {{ Str::limit($kritiksaran->pesan, 25, '...') }} --}}
                                     </td>
                                     <td>
                                         <div class="btn-group dropstart  mb-1">
