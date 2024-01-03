@@ -52,9 +52,9 @@ class BookingController extends Controller
             $path = Storage::disk('lampiran_surat_booking')->putFile(null, $lampiran_surat);
 
             // Tambahkan relative path ke $path
-            $path = $rel_path .'/'. $path;
+            $path = $rel_path . '/' . $path;
         }
-        
+
         $booking                    = new Booking;
         $booking->nama              = $request->nama;
         $booking->email             = $request->email;
@@ -110,11 +110,14 @@ class BookingController extends Controller
     {
         $lampiran_surat = $request->lampiran_surat;
 
+        // Default path adalah path surat lampiran yang ada sekarang
+        $path = $booking->lampiran_surat;
+
         // Pastikan lampiran_surat ada dan valid
         if ($lampiran_surat && $lampiran_surat->isValid()) {
             // Hapus lampiran surat yang sudah ada
             if ($booking->lampiran_surat) Storage::delete($booking->lampiran_surat);
-            
+
             // Ambil relative path folder dari lampiran_surat_booking
             $rel_path = config('filesystems.disks.lampiran_surat_booking.relative_path');
 
@@ -122,9 +125,9 @@ class BookingController extends Controller
             $path = Storage::disk('lampiran_surat_booking')->putFile(null, $lampiran_surat);
 
             // Tambahkan relative path ke $path
-            $path = $rel_path .'/'. $path;
+            $path = $rel_path . '/' . $path;
         }
-        
+
         $booking->nama              = $request->nama;
         $booking->email             = $request->email;
         $booking->telp              = $request->telp;
@@ -154,7 +157,7 @@ class BookingController extends Controller
     {
         // Kalo ada file lampiran surat nya, maka hapus
         if ($booking->lampiran_surat) Storage::delete($booking->lampiran_surat);
-        
+
         $booking->delete();
 
         return redirect()->route('booking.index')->with('success', 'Data Booking Berhasil Dihapus');
@@ -168,5 +171,4 @@ class BookingController extends Controller
         /** Antrikan email untuk nanti dijalankan oleh cron */
         // Mail::to($request->email)->queue(new MailBooking($request));
     }
-
 }
