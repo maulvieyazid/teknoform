@@ -48,6 +48,7 @@
         iframe {
             height: 100%;
             width: 100%;
+            border: none;
         }
     </style>
 
@@ -56,7 +57,7 @@
 
 <body>
 
-    <iframe src="https://www.theasys.io/viewer/f4dfh5SnrUvSQdXKQC3IT09vbg6BCN" style="border:none;" allowfullscreen="true" frameborder="0" scrolling="no" allow="vr;gyroscope;accelerometer"></iframe>
+    <iframe src="https://www.theasys.io/viewer/f4dfh5SnrUvSQdXKQC3IT09vbg6BCN" allowfullscreen="true" frameborder="0" scrolling="no" allow="vr;gyroscope;accelerometer"></iframe>
 
 </body>
 
