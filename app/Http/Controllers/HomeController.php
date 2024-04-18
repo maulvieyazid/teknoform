@@ -25,7 +25,7 @@ class HomeController extends Controller
         $cookie = Cookie::get('has_entered_virtual_tour_data', null);
         if (!$cookie) return redirect()->route('entry_virtual_tour');
 
-        return view('360');
+        return view('360_v2');
     }
 
     function entry_virtual_tour(Request $request)
