@@ -35,7 +35,7 @@ Route::post('entry-360', 'HomeController@store_entry_virtual_tour')->name('store
     dd($result);
 }); */
 
-Route::get('file-liat', function () {
+/* Route::get('file-liat', function () {
     $dir = '1ghugWMTtOWHxvMZdbKhr26HZWxpmeJsh';
     $recursive = false; // Get subdirectories also?
     $contents = collect(Storage::cloud()->listContents($dir, $recursive));
@@ -46,7 +46,7 @@ Route::get('file-liat', function () {
     dd($contents);
 
     return redirect('https://docs.google.com/document/d/13JSvmGIHPG7SEKaaUP6l8VU_Pi4jMHrJMluwxxLoSo8/edit');
-});
+}); */
 
 /* Route::get('file-update', function () {
     $result = Storage::cloud()->update("13JSvmGIHPG7SEKaaUP6l8VU_Pi4jMHrJMluwxxLoSo8", 'coabacobaobcoab');
