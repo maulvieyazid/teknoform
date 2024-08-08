@@ -1,6 +1,8 @@
 @extends('layouts.museum')
 
 @push('css')
+    <meta name="robots" content="noindex, nofollow">
+
     <link rel="stylesheet" href="{{ asset('css/jquery.toast.min.css') }}" />
 
     <!-- Select2 -->
